@@ -1,5 +1,10 @@
 <h1>Home#index</h1>
 <p>Find me in app/views/home/index.html.erb</p>
 
-<div data-controller="hello"><div>
-<div data-controller="ciao"></div>
+<%= render "web_components/ciao" %>
+<%= render "web_components/ciao" %>
+<%= render "web_components/hello" %>
+<%= render "web_components/ciao" %>
+
+<%# For some reason 'hello' stops the execution on the rest of the code,
+'ciao', a web component, does not interupt the code %>
