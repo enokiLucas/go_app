@@ -46,7 +46,6 @@ class GoBoard extends HTMLElement {
 
 	initializeBoard(size) {
 		//Remove existing board when on already exist.
-		console.log('hello');
 		const existingSVG = this.shadowRoot.querySelector('svg');
 		if (existingSVG) {
 			existingSVG.remove();
