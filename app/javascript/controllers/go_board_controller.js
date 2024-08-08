@@ -5,6 +5,7 @@ export default class extends Controller {
   connect() {
     this.element.innerHTML = `<go-board></go-board>`;
     this.testEventListeners();
+    this.testEventFromOtherComponent();
     console.log('hello from connect');
   }
 
@@ -15,5 +16,10 @@ export default class extends Controller {
     });
   }
 
-  
+  testEventFromOtherComponent() {
+    console.log('hello from test 2');
+    document.addEventListener('click', () => {
+      console.log('Listened to the click');
+    })
+  }
 }
