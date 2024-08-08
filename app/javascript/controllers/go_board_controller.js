@@ -5,7 +5,8 @@ export default class extends Controller {
   connect() {
     this.element.innerHTML = `<go-board></go-board>`;
     this.testEventListeners();
-    this.testEventFromOtherComponent();
+    this.testClick();
+    this.testEventFromGameStateManager();
     console.log('hello from connect');
   }
 
@@ -16,10 +17,17 @@ export default class extends Controller {
     });
   }
 
-  testEventFromOtherComponent() {
-    console.log('hello from test 2');
+  testClick() {
+    console.log('hello from test click');
     document.addEventListener('click', () => {
       console.log('Listened to the click');
+    })
+  }
+
+  testEventFromGameStateManager() {
+    console.log('hello from test of GMS');
+    document.addEventListener('captures-changed', (e) => {
+      console.log(e.detail);
     })
   }
 }
