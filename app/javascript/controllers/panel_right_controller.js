@@ -1,8 +1,8 @@
 import { Controller } from '@hotwired/stimulus';
-import '../components/GoBoard.js';
+import '../components/PanelRight';
 
 export default class extends Controller {
   connect() {
-    this.element.innerHTML = `<go-board></go-board>`;
+    this.element.innerHTML = `<panel-right></panel-right>`;
   }
 }
