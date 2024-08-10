@@ -10,6 +10,7 @@ export class SVGBoard {
 	}
 
 	createBoard() {
+		const woodUrl = document.querySelector('[wood-url]').getAttribute('wood-url');
 		// Create a new SVG element
 		let board = document.createElementNS(SVG_NS, "svg");
 		board.setAttribute('width', '100%');
@@ -24,7 +25,7 @@ export class SVGBoard {
 		pattern.setAttribute('height', '300'); // Height of the image
 
 		let image = document.createElementNS(SVG_NS, "image");
-		image.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '../assets/images/GimpWood01.png'); //TODO
+		image.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', woodUrl); //TODO
 		image.setAttribute('width', '300');
 		image.setAttribute('height', '300');
 
