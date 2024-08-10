@@ -1,5 +1,5 @@
 import { Controller } from '@hotwired/stimulus';
-import '../components/PanelRight';
+import '../components/PanelRight/PanelRight.js';
 
 export default class extends Controller {
   connect() {
