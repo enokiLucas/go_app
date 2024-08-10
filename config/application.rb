@@ -38,5 +38,8 @@ module GoApp
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Enable Template Helper
+    config.assets.paths << Rails.root.join('app', 'views', 'templates')
   end
 end
