@@ -8,8 +8,8 @@ class PanelRight extends HTMLElement {
 	}
 
 	async connectedCallback() {
-		await loadHTML(this.shadowRoot, '../../assets/html/PanelRight.html');
-		await loadStyles(this.shadowRoot, '../../assets/styles/PanelRight.css');
+		//await loadHTML(this.shadowRoot, '../../assets/html/PanelRight.html');
+		//await loadStyles(this.shadowRoot, '../../assets/styles/PanelRight.css');
 		this.switchTabs();
 	}
 

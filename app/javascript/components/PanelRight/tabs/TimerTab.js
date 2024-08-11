@@ -10,8 +10,8 @@ class TimerTab extends HTMLElement {
 	}
 
 	async connectedCallback() {
-		await loadHTML(this.shadowRoot, '../../../assets/html/TimerTab.html');
-		await loadStyles(this.shadowRoot, '../../../assets/styles/TimerTab.css');
+		//await loadHTML(this.shadowRoot, '../../../assets/html/TimerTab.html');
+		//await loadStyles(this.shadowRoot, '../../../assets/styles/TimerTab.css');
 		document.addEventListener('moveMade', this.updateTimerDisplay);
 		document.addEventListener('passMade', this.updateTimerDisplay);
 		this.testTimer();

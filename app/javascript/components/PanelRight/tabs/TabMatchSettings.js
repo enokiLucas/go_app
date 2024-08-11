@@ -8,8 +8,8 @@ class TabMatchSettings extends HTMLElement {
 	}
 
 	async connectedCallback() {
-		await loadHTML(this.shadowRoot, '../../../assets/html/panelTabs/TabMatchSettings.html');
-		await loadStyles(this.shadowRoot, '../../../assets/styles/PanelRight.css');
+		//await loadHTML(this.shadowRoot, '../../../assets/html/panelTabs/TabMatchSettings.html');
+		//await loadStyles(this.shadowRoot, '../../../assets/styles/PanelRight.css');
 	}
 }
 
