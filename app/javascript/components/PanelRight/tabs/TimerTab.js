@@ -10,8 +10,8 @@ class TimerTab extends HTMLElement {
 	}
 
 	async connectedCallback() {
-		//await loadHTML(this.shadowRoot, '../../../assets/html/TimerTab.html');
-		await loadStyles(this.shadowRoot, document.querySelector('[style-url]').getAttribute('style-url'));
+		const styleUrl = document.querySelector('[style-url]').getAttribute('style-url');
+		await loadStyles(this.shadowRoot, styleUrl);
 		this.shadowRoot.innerHTML = `
 			<div class="timer black-turn">
 				<div class="player-turn">Black's Turn</div>
