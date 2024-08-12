@@ -1,4 +1,4 @@
-import { loadHTML } from '../../../utils/HTMLLoader.js';
+//import { loadHTML } from '../../../utils/HTMLLoader.js';
 import { loadStyles } from '../../../utils/StyleLoader.js';
 import { gameStateManager } from '../../../services/GameStateManager.js';
 import { timer } from '../../../services/time/Timer.js';
@@ -11,7 +11,28 @@ class TimerTab extends HTMLElement {
 
 	async connectedCallback() {
 		//await loadHTML(this.shadowRoot, '../../../assets/html/TimerTab.html');
-		//await loadStyles(this.shadowRoot, '../../../assets/styles/TimerTab.css');
+		await loadStyles(this.shadowRoot, document.querySelector('[style-url]').getAttribute('style-url'));
+		this.shadowRoot.innerHTML = `
+			<div class="timer black-turn">
+				<div class="player-turn">Black's Turn</div>
+
+				<div id="timer-head">
+					<div class="timer-head-index black-section"> Black</div>
+					<div class="timer-head-index white-section"> White</div>
+				</div>
+
+				<div id="timer-body">
+					<div id="black-timer" class="black-section">00:00</div>
+					<div id="white-timer" class="white-section">00:00</div>
+				</div>
+
+				<div id="timer-captures">
+					<div class="captures-counter black-section">Captures: 0</div>
+					<div class="captures-counter white-section">Captures: 0</div>
+				</div>
+			</div>
+		`;
+		
 		document.addEventListener('moveMade', this.updateTimerDisplay);
 		document.addEventListener('passMade', this.updateTimerDisplay);
 		this.testTimer();
