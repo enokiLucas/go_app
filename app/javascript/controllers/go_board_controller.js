@@ -4,6 +4,5 @@ import '../components/GoBoard.js';
 export default class extends Controller {
   connect() {
     this.element.innerHTML = `<go-board></go-board>`;
-    console.log('hello from connect');
   }
 }
