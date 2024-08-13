@@ -10,8 +10,10 @@ class TimerTab extends HTMLElement {
 	}
 
 	async connectedCallback() {
-		const styleUrl = document.querySelector('[style-url]').getAttribute('style-url');
-		await loadStyles(this.shadowRoot, styleUrl);
+		const styleUrl = document.querySelector('[timer-url]').getAttribute('timer-url');
+		//console.log(styleUrl);
+		
+		
 		this.shadowRoot.innerHTML = `
 			<div class="timer black-turn">
 				<div class="player-turn">Black's Turn</div>
@@ -32,6 +34,8 @@ class TimerTab extends HTMLElement {
 				</div>
 			</div>
 		`;
+		
+		await loadStyles(this.shadowRoot, styleUrl);
 		
 		document.addEventListener('moveMade', this.updateTimerDisplay);
 		document.addEventListener('passMade', this.updateTimerDisplay);
