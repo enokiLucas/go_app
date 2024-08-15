@@ -1,5 +1,4 @@
 import { loadStyles } from '../../../utils/StyleLoader.js';
-import { gameStateManager } from '../../../services/GameStateManager.js';
 import { newMatchManager } from '../../../services/NewMatchManager.js';
 
 class ButtonBoardSize extends HTMLElement {
@@ -14,7 +13,7 @@ class ButtonBoardSize extends HTMLElement {
 	}
 
 	connectedCallback() {
-		loadStyles(this.shadowRoot, '../../../assets/styles/Buttons.css');
+		//loadStyles(this.shadowRoot, '../../../assets/styles/Buttons.css');
 
 		const button = document.createElement('button');
 		button.textContent = this.boardSize;
