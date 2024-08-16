@@ -1,4 +1,5 @@
 import { loadStyles } from '../../../utils/StyleLoader.js';
+import { gameStateManager } from '../../../services/GameStateManager.js';
 import { newMatchManager } from '../../../services/NewMatchManager.js';
 
 class ButtonBoardSize extends HTMLElement {
@@ -17,12 +18,12 @@ class ButtonBoardSize extends HTMLElement {
 
 		const button = document.createElement('button');
 		button.textContent = this.boardSize;
-/*
+
 		// Add event listener
 		button.addEventListener('click', () => {
 			gameStateManager.boardSize = this.boardSize;
 		});
-*/
+
 
 		button.addEventListener('click', () => {
 			newMatchManager.updateNewMatchSettings('boardSize', this.boardSize);
