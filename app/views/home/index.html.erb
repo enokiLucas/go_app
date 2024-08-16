@@ -1,9 +1,20 @@
 <main>
   <%= render "web_components/go_board" %>
   
+
   <sl-menu>
     <%= render "web_components/timer_tab" %>
+    <sl-tab-group placement="end">
 
-    <%= render "web_components/button_board_size" %>
+      <sl-tab slot="nav" panel="new-game">New Game</sl-tab>
+      <sl-tab slot="nav" panel="test-tab1">Test Tab</sl-tab>
+
+      <sl-tab-panel name="new-game">
+        <%= render "web_components/button_board_size" %>
+      </sl-tab-panel>
+      <sl-tab-panel name="test-tab1">This is Test Tab N° 1</sl-tab-panel>
+
+    </sl-tab-group>
   </sl-menu>
+  
 </main>
