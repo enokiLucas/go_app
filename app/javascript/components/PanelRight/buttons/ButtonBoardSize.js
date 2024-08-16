@@ -16,21 +16,15 @@ class ButtonBoardSize extends HTMLElement {
 	connectedCallback() {
 		//loadStyles(this.shadowRoot, '../../../assets/styles/Buttons.css');
 
-		const button = document.createElement('button');
-		button.textContent = this.boardSize;
+		const button = document.getElementById(`slButton-${this.boardSize}`); console.log(button);
 
 		// Add event listener
 		button.addEventListener('click', () => {
 			gameStateManager.boardSize = this.boardSize;
+			newMatchManager.updateNewMatchSettings('boardSize', this.boardSize);
 		});
 
-
-		button.addEventListener('click', () => {
-			newMatchManager.updateNewMatchSettings('boardSize', this.boardSize);
-		})
-
 		this.shadowRoot.appendChild(button);
-
 	}
 
 }
