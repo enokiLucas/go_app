@@ -1,4 +1,3 @@
-//import { loadHTML } from '../../../utils/HTMLLoader.js';
 import { loadStyles } from '../../../utils/StyleLoader.js';
 import { gameStateManager } from '../../../services/GameStateManager.js';
 import { timer } from '../../../services/time/Timer.js';
@@ -11,9 +10,7 @@ class TimerTab extends HTMLElement {
 
 	async connectedCallback() {
 		const styleUrl = document.querySelector('[timer-url]').getAttribute('timer-url');
-		//console.log(styleUrl);
-		
-		
+
 		this.shadowRoot.innerHTML = `
 			<div class="timer black-turn">
 				<div class="player-turn">Black's Turn</div>
@@ -39,6 +36,7 @@ class TimerTab extends HTMLElement {
 		
 		document.addEventListener('moveMade', this.updateTimerDisplay);
 		document.addEventListener('passMade', this.updateTimerDisplay);
+		document.addEventListener('captures-changed', this.updateCaptureDisplay);
 		this.testTimer();
 
 	}
@@ -99,9 +97,8 @@ class TimerTab extends HTMLElement {
 	}
 
 	//Update the capture display.
-	updateCaptureDisplay(e) {
+	updateCaptureDisplay = (e) => {
 		const newScore = gameStateManager.getCaptureCounter();
-		//console.log(newScore[e.detail.player]);
 		const captureCounter = this.shadowRoot.querySelector(`.captures-counter.${e.detail.player}-section`);
 		captureCounter.textContent = `Captures: ${e.detail.captures}`;
 	}

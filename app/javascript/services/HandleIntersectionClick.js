@@ -4,11 +4,8 @@ import { placeStoneOnBoard } from './PlaceStoneOnBoard.js';
 import { convertToSGFPosition, getPlayerSGFColor } from '../utils/SGFUtil.js';
 import { EDGE_MARGIN, LENGTH_SQUARE } from '../utils/constants.js';
 import { captureRule } from './rules/CaptureRule.js';
-//TEST
-import { exploreTerritory } from '../utils/ScoreUtil.js';
-import { territoryScoring } from './score/TerritoryScoring.js';
 import { influenceMap } from './InfluenceMap.js';
-import { deadStonesDetector } from './DeadStonesDetector.js'
+
 
 let lastMoveMetadata = {}; // Temporary storage for metadata outside of handleIntersectionClick
 
@@ -54,8 +51,8 @@ export function handleIntersectionClick(board, event, ghostStone) {
 	//Update the influence map.
 	influenceMap.updateMap(simulatedMatrix);
 
-//==========================================TEST===================================================
-//=========================================END TEST=================================================
+//========================================TEST===================================================
+//======================================END TEST=================================================
 	if (validationResult.isValid) {
 		// Apply the move
 		updateBoard(board, x, y, boardX, boardY, gameStateManager.currentPlayer, ghostStone);
