@@ -16,7 +16,7 @@ class ButtonBoardSize extends HTMLElement {
 	connectedCallback() {
 		//loadStyles(this.shadowRoot, '../../../assets/styles/Buttons.css');
 
-		const button = document.getElementById(`slButton-${this.boardSize}`); console.log(button);
+		const button = document.getElementById(`slButton-${this.boardSize}`);
 
 		// Add event listener
 		button.addEventListener('click', () => {
@@ -24,7 +24,7 @@ class ButtonBoardSize extends HTMLElement {
 			newMatchManager.updateNewMatchSettings('boardSize', this.boardSize);
 		});
 
-		this.shadowRoot.appendChild(button);
+		//this.shadowRoot.appendChild(button);
 	}
 
 }

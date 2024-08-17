@@ -19,7 +19,7 @@ class ButtonNewGame extends HTMLElement {
 			this.startNewGame();
 		});
 
-		this.shadowRoot.appendChild(button);
+		//this.shadowRoot.appendChild(button);
 	}
 
 	startNewGame() {
