@@ -9,11 +9,10 @@ class ButtonNewGame extends HTMLElement {
 		this.attachShadow({ mode: 'open' });
 	}
 
-	async connectedCallback() {
-		await loadStyles(this.shadowRoot, '../../../assets/styles/Buttons.css');
+	connectedCallback() {
+		//await loadStyles(this.shadowRoot, '../../../assets/styles/Buttons.css');
 
-		const button = document.createElement('button');
-		button.textContent = `Start New Game`;
+		const button = document.getElementById('bt-new-game');
 
 		// Add event listener
 		button.addEventListener('click', () => {
