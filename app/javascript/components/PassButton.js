@@ -1,5 +1,4 @@
 import { gameStateManager } from '../services/GameStateManager.js'
-import { loadStyles } from '../utils/StyleLoader.js';
 import { getPlayerSGFColor } from '../utils/SGFUtil.js'
 
 class PassButton extends HTMLElement {
@@ -9,19 +8,11 @@ class PassButton extends HTMLElement {
 	}
 
 	connectedCallback() {
-		loadStyles(this.shadowRoot, '../assets/styles/Buttons.css');
-		const button = document.createElement('button');
-
-		button.textContent = 'Pass';
-		button.setAttribute('class', 'lieu-button');
-		button.setAttribute('id', 'button-pass');
+		const button = document.getElementById('button-pass');
 
 		button.addEventListener('click', () => {
 			gameStateManager.makePass(getPlayerSGFColor(gameStateManager.currentPlayer));
-
 		});
-
-		this.shadowRoot.appendChild(button);
 	}
 }
 
