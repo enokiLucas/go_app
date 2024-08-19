@@ -15,8 +15,6 @@ class ResignButton extends HTMLElement {
 				player: gameStateManager.currentPlayer
 			} }));
 		});
-
-		this.shadowRoot.appendChild(button);
 	}
 }
 
