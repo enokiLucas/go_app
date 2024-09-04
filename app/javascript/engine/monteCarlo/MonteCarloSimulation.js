@@ -8,7 +8,7 @@ class MonteCarloSimulation {
       const [x, y] = MonteCarloSimulation.getRandomMove(simulationState);
       simulationState.applyMove(x, y);
     }
-    return { move: `${simulationState.lastMoveX},${simulationState.lastMoveY}`, score: MonteCarloSimulation.score(simulationState) }; // ALERT: 'score: undefined'
+    return { move: `${simulationState.lastMoveX},${simulationState.lastMoveY}`, score: MonteCarloSimulation.score(simulationState) };
   }
 
   static isTerminal(state) {
@@ -28,7 +28,7 @@ class MonteCarloSimulation {
   }
 
   static score(state) {
-    return territoryScoring.countScore(state.boardMatrix, false); // ALERT
+    return territoryScoring.countScore(state.boardMatrix, false);
   }
 }
 

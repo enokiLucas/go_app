@@ -15,30 +15,53 @@ class TerritoryScoring {
 		this.visited = new Set();
 	}
 
-	countScore() {
-		const scoringBoard = rulesControl.createSimulatedBoardMatrix();
+	/**
+	 * In monte carlo simulation, countScore has am argument that is the state boardMatrix
+	 * but in the EndGameManager, it is used without an arg as it was first designed.
+	 * 
+	 * Make the function below receive an argument of the matrix
+	 * 
+	 * Try the following first:
+	 * countScore(const scoringBoard = rulesControl.createSimulatedBoardMAtrix)
+	*/
+
+	addTerritoryToScore() {
+		// Add territory size to the corresponding player's score
+		if (surroundedBy === 'black') {
+			this.blackTerritory += points.length;
+		} else if (surroundedBy === 'white') {
+			this.whiteTerritory += points.length;
+		}
+	}
+
+	/**
+	 * 
+	 * @param {Array} scoringBoard matrix made based on the board that can be manipulated without interfering with the original
+	 * @param {boolean} bool switch for using the function addTerritoryToScore
+	 * 	true: add the territory to the score
+	 * 	false: does not add territory to the score. 
+	 */
+	countScore(scoringBoard, bool) {
 		for (let x = 0; x < scoringBoard.length; x++) {
 			for (let y = 0; y < scoringBoard[x].length; y++) {
 				if (scoringBoard[x][y] === null && !this.visited.has(`${x},${y}`)) {
 					const { points, isCompletelySurrounded, surroundedBy } = exploreTerritory(scoringBoard, x, y);
-					//console.log(territory)
-					//console.log(`points:${points}, isCompletelySurrounded:${isCompletelySurrounded}, surroundedBy:${surroundedBy}`);
 					if (isCompletelySurrounded) {
 						// Mark all explored territory points as visited
 						points.forEach(point => {
 							this.visited.add(`${point.x},${point.y}`);
 						});
-						// Add territory size to the corresponding player's score
-						if (surroundedBy === 'black') {
-							this.blackTerritory += points.length;
-						} else if (surroundedBy === 'white') {
-							this.whiteTerritory += points.length;
+						// In case countScore is used without the intention of calculating the final score.
+						if (bool) {
+							this.addTerritoryToScore;
+						} else {
+							return points.length;
 						}
 					}
 				}
 			}
 		}
-		//console.log(`Black Territory: ${this.blackTerritory}, White Territory: ${this.whiteTerritory}`); TEST
+
 		const scoreTerritory = new CustomEvent('scoreTerritory', {
 			detail: {
 				blackTerritory: this.blackTerritory,

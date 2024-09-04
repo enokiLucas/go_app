@@ -43,8 +43,7 @@ function executeMove(board, ghostStone, x, y, boardX, boardY) {
 	simulatedMatrix[boardX][boardY] = gameStateManager.currentPlayer;
 
 	// Save the validation result.
-	const validationResult = rulesControl.isMoveValid(boardX, boardY, simulatedMatrix,  gameStateManager.currentPlayer); console.log(validationResult);
-
+	const validationResult = rulesControl.isMoveValid(boardX, boardY, simulatedMatrix,  gameStateManager.currentPlayer);
 	//Update the influence map.
 	influenceMap.updateMap(simulatedMatrix);
 
@@ -74,7 +73,6 @@ function executeMove(board, ghostStone, x, y, boardX, boardY) {
  * @returns 
  */
 async function aiMakeMove(board, boardX, boardY, ghostStone) {
-	console.log('start aiMakeMove');
 	const currentState = new MonteCarloState(rulesControl.boardMatrix, gameStateManager.currentPlayer, gameStateManager.getPassCounter, boardX, boardY);
 	
 	// Run the Monte Carlo simulation asynchronously to find the best move
@@ -82,7 +80,7 @@ async function aiMakeMove(board, boardX, boardY, ghostStone) {
 		setTimeout(() => {
 			resolve(monteCarloEngine.run(currentState));
 		}, 0);
-	}); console.log(currentState);
+	});
 
 	if (bestMove) {
 		const [x, y] = bestMove.split(',').map(Number); // Extract coordinates from the move string
