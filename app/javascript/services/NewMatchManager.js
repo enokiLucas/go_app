@@ -5,12 +5,14 @@ class NewMatchManager {
 			playAs: 'black',
 			difficult: 1,
 			whiteHandicap: 0,
-			komi: 6.5
+			komi: 6.5,
+			ai_player: true
 		};
 	}
 
 	updateNewMatchSettings(key, value) {
 		this.newMatchSettings[key] = value;
+		console.log(this.newMatchSettings[key]);
 	}
 
 	getNewMatchSettings() {
