@@ -15,14 +15,15 @@ class AiPlayerSwitch extends HTMLElement {
     const form = this.shadowRoot.querySelector('.switch-ai-player');
 
     form.addEventListener('sl-change', () => {
-      console.log('listenning to the switch');
       const matchSettings = newMatchManager.getNewMatchSettings();
       let ai_bool = matchSettings['ai_player'];
+
       if (ai_bool) {
         ai_bool = false;
       } else {
         ai_bool = true;
       }
+      
       newMatchManager.updateNewMatchSettings('ai_player', ai_bool);
     });
   }

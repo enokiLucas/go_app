@@ -10,16 +10,12 @@ class ButtonNewGame extends HTMLElement {
 	}
 
 	connectedCallback() {
-		//await loadStyles(this.shadowRoot, '../../../assets/styles/Buttons.css');
-
 		const button = document.getElementById('bt-new-game');
 
 		// Add event listener
 		button.addEventListener('click', () => {
 			this.startNewGame();
 		});
-
-		//this.shadowRoot.appendChild(button);
 	}
 
 	startNewGame() {

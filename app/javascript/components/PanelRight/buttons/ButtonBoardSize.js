@@ -14,8 +14,6 @@ class ButtonBoardSize extends HTMLElement {
 	}
 
 	connectedCallback() {
-		//loadStyles(this.shadowRoot, '../../../assets/styles/Buttons.css');
-
 		const button = document.getElementById(`slButton-${this.boardSize}`);
 
 		// Add event listener
@@ -23,8 +21,6 @@ class ButtonBoardSize extends HTMLElement {
 			gameStateManager.boardSize = this.boardSize;
 			newMatchManager.updateNewMatchSettings('boardSize', this.boardSize);
 		});
-
-		//this.shadowRoot.appendChild(button);
 	}
 
 }
