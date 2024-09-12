@@ -8,6 +8,7 @@ class GameStateManager { //Remember to fix SGF TODO
 		this.captureCounter = { black: 0, white: 0 }; // Track how many stones each player captured.
 		this.scoreCounter = { black: 0, white: 0}; // Save the score.
 		this.passCounter = 0; // Track consecutive passes
+		this.ai_player = true;
 	}
 
 	get timerControler() {
