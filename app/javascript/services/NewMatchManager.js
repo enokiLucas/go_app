@@ -6,7 +6,7 @@ class NewMatchManager {
 			difficult: 1,
 			whiteHandicap: 0,
 			komi: 6.5,
-			ai_player: true
+			aiPlayer: true
 		};
 	}
 

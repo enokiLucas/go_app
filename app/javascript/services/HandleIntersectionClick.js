@@ -105,5 +105,8 @@ export async function handleIntersectionClick(board, event, ghostStone) {
 
 	executeMove(board, ghostStone, x, y, boardX, boardY);
 
-	await aiMakeMove(board, boardX, boardY, ghostStone);
+	const aiPlayer = gameStateManager.aiPlayer;
+	if (aiPlayer) {
+		await aiMakeMove(board, boardX, boardY, ghostStone);
+	}
 }
