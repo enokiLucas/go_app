@@ -18,7 +18,6 @@ class ButtonBoardSize extends HTMLElement {
 
 		// Add event listener
 		button.addEventListener('click', () => {
-			gameStateManager.boardSize = this.boardSize;
 			newMatchManager.updateNewMatchSettings('boardSize', this.boardSize);
 		});
 	}
