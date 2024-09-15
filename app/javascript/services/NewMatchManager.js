@@ -1,5 +1,6 @@
 class NewMatchManager {
 	constructor() {
+		this.id = Math.random();
 		this.newMatchSettings = {
 			boardSize: 9,
 			playAs: 'black',
@@ -12,7 +13,6 @@ class NewMatchManager {
 
 	updateNewMatchSettings(key, value) {
 		this.newMatchSettings[key] = value;
-		console.log(this.newMatchSettings[key]);
 	}
 
 	getNewMatchSettings() {

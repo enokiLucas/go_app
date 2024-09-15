@@ -1,5 +1,3 @@
-import { loadStyles } from '../../../utils/StyleLoader.js';
-import { gameStateManager } from '../../../services/GameStateManager.js';
 import { newMatchManager } from '../../../services/NewMatchManager.js';
 
 class ButtonBoardSize extends HTMLElement {

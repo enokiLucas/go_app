@@ -1,4 +1,4 @@
-import { newMatchManager } from "../services/NewMatchManager";
+import { newMatchManager } from "../services/NewMatchManager.js";
 
 class AiPlayerSwitch extends HTMLElement {
   constructor() {
@@ -16,15 +16,14 @@ class AiPlayerSwitch extends HTMLElement {
 
     form.addEventListener('sl-change', () => {
       const matchSettings = newMatchManager.getNewMatchSettings();
-      let ai_bool = matchSettings['ai_player'];
+      let aiBool = matchSettings['aiPlayer'];
 
-      if (ai_bool) {
-        ai_bool = false;
+      if (aiBool) {
+        aiBool = false;
       } else {
-        ai_bool = true;
+        aiBool = true;
       }
-      
-      newMatchManager.updateNewMatchSettings('ai_player', ai_bool);
+      newMatchManager.updateNewMatchSettings('aiPlayer', aiBool);
     });
   }
 }

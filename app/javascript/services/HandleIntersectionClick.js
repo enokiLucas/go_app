@@ -87,7 +87,7 @@ async function aiMakeMove(board, boardX, boardY, ghostStone) {
 		const cx = EDGE_MARGIN + (LENGTH_SQUARE * x);
 		const cy = EDGE_MARGIN + (LENGTH_SQUARE * y);
 		executeMove(board, ghostStone, cx, cy, x, y);
-		console.log(`AI chose move at (${x}, ${y})`);
+		//console.log(`AI chose move at (${x}, ${y})`);
 		return [cx, cy];
 	} else {
 		console.log("AI couldn't find a valid move.");
