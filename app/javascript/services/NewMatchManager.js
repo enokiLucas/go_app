@@ -1,6 +1,5 @@
 class NewMatchManager {
 	constructor() {
-		this.id = Math.random();
 		this.newMatchSettings = {
 			boardSize: 9,
 			playAs: 'black',
