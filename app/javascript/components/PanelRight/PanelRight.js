@@ -1,4 +1,3 @@
-import { loadHTML } from '../../utils/HTMLLoader.js';
 import { loadStyles } from '../../utils/StyleLoader.js';
 
 class PanelRight extends HTMLElement {
@@ -8,8 +7,9 @@ class PanelRight extends HTMLElement {
 	}
 
 	async connectedCallback() {
-		//await loadHTML(this.shadowRoot, '../../assets/html/PanelRight.html');
-		//await loadStyles(this.shadowRoot, '../../assets/styles/PanelRight.css');
+		const styleUrl = document.querySelector('[panel-right-url]').getAttribute('panel-right-url');
+		console.log(styleUrl);
+		await loadStyles(this.shadowRoot, styleUrl);
 		this.switchTabs();
 	}
 
