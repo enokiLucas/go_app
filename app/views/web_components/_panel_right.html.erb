@@ -1,26 +1,23 @@
 <div panel-right-url="<%= asset_path('panel_right.css') %>"></div>
 
 <div data-controller="panel-right">
+  <sl-menu>
+    <%= render "web_components/timer_tab" %>
+    <sl-tab-group placement="end">
 
+      <sl-tab slot="nav" panel="new-game">New Game</sl-tab>
+      <sl-tab slot="nav" panel="test-tab1">Test Tab</sl-tab>
 
-      <sl-menu>
-        <%= render "web_components/timer_tab" %>
-        <sl-tab-group placement="end">
-
-          <sl-tab slot="nav" panel="new-game">New Game</sl-tab>
-          <sl-tab slot="nav" panel="test-tab1">Test Tab</sl-tab>
-
-          <sl-tab-panel name="new-game">
-            <%= render "web_components/button_board_size" %>
-            <%= render "web_components/button_new_game" %>
-            <%= render "web_components/ai_player_switch" %>
+      <sl-tab-panel name="new-game">
+        <%= render "web_components/button_board_size" %>
+        <%= render "web_components/button_new_game" %>
+        <%= render "web_components/ai_player_switch" %>            
+      </sl-tab-panel>
             
-          </sl-tab-panel>
-          
-          <sl-tab-panel name="test-tab1">
-            
-          </sl-tab-panel>
+      <sl-tab-panel name="test-tab1">
+              
+      </sl-tab-panel>
 
-        </sl-tab-group>
-      </sl-menu>
+    </sl-tab-group>
+  </sl-menu>
 </div>
