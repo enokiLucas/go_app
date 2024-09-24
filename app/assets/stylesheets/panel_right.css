@@ -3,6 +3,7 @@
 	margin: 0;
 	box-sizing: border-box;
 	font-family: "Poppins", sans-serif;
+	color: red; /* Testing if the CSS is loading properly */ 
 }
 
 .vertical-tabs-panel {

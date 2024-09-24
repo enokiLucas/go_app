@@ -12,24 +12,6 @@ class PanelRight extends HTMLElement {
 		await loadStyles(this.shadowRoot, styleUrl);
 		this.switchTabs();
 	}
-
-	switchTabs() {
-		const tabs = this.shadowRoot.querySelectorAll(".tabs h3");
-		const tabContents = this.shadowRoot.querySelectorAll(".tab-content .custom-tab");
-
-		tabs.forEach((tab, index) => {
-			tab.addEventListener("click", () => {
-				tabContents.forEach(content => {
-					content.classList.remove("active");
-				});
-				tabs.forEach((tab) => {
-					tab.classList.remove("active");
-				});
-				tabContents[index].classList.add("active");
-				tabs[index].classList.add("active");
-			});
-		});
-	}
 }
 
 customElements.define('panel-right', PanelRight);
