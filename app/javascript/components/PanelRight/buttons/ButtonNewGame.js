@@ -18,7 +18,7 @@ class ButtonNewGame extends HTMLElement {
 
 	startNewGame() {
 		gameStateManager.resetGameState();
-		timer.setTime();
+		timer.resetTime();
 		timer.setTimerBeforeMatch();
 		timer.startCountdown(); // Start the timer for the new game
 		const newMatchSettings = newMatchManager.getNewMatchSettings();

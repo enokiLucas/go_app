@@ -6,6 +6,7 @@ class Timer {
 		this.time = {};
 		this.timerPath = {};
 		this.intervalID = { black: null, white: null };
+		this.timerID = Math.random();// TEST
 	}
 
 	setTime() {
@@ -13,6 +14,12 @@ class Timer {
 			black: 60 * this.timeMinutes['black'],
 			white: 60 * this.timeMinutes['white']
 		}
+	}
+
+	resetTime() {
+		this.stopCountdown('black');
+		this.stopCountdown('white');
+		this.setTime();
 	}
 
 	setTimerPath(pathToShadowRoot) {
@@ -34,6 +41,7 @@ class Timer {
 			} else {
 				this.convertToClock(player);
 				this.time[player]--; // Decrement the timer
+				console.log(this.timerID); // TEST
 			}
 		}, 1000);
 		//console.log(this.intervalID[player]); //TEST
