@@ -4,7 +4,7 @@ import { MonteCarloSimulation } from './MonteCarloSimulation.js';
 import { MoveSelection } from './MoveSelection.js';
 
 class MonteCarloEngine {
-  constructor(numSimulations = 100) {
+  constructor(numSimulations = 1) {
     this.numSimulations = numSimulations;
   }
 
