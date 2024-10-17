@@ -6,7 +6,6 @@ class Timer {
 		this.time = {};
 		this.timerPath = {};
 		this.intervalID = { black: null, white: null };
-		this.timerID = Math.random();// TEST
 	}
 
 	setTime() {
@@ -41,10 +40,8 @@ class Timer {
 			} else {
 				this.convertToClock(player);
 				this.time[player]--; // Decrement the timer
-				console.log(this.timerID); // TEST
 			}
 		}, 1000);
-		//console.log(this.intervalID[player]); //TEST
 	}
 
 	stopCountdown(player) {
