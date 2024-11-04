@@ -7,8 +7,6 @@ import { captureRule } from './rules/CaptureRule.js';
 import { influenceMap } from './InfluenceMap.js';
 import { monteCarloEngine } from '../engine/monteCarlo/MonteCarloEngine.js';
 import { MonteCarloState } from '../engine/monteCarlo/MonteCarloState.js';
-//TEST
-//END TEST
 
 let lastMoveMetadata = {}; // Temporary storage for metadata outside of handleIntersectionClick
 
@@ -75,17 +73,12 @@ function executeMove(board, ghostStone, x, y, boardX, boardY) {
 async function aiMakeMove(board, boardX, boardY, ghostStone) {
 	const currentState = new MonteCarloState(rulesControl.boardMatrix, gameStateManager.currentPlayer, gameStateManager.getPassCounter, boardX, boardY);
 	
-	/**
-	 * For RandonMove, returns a move.
-	 * But for HeuristicMove, returns null
-	 */
 	// Run the Monte Carlo simulation asynchronously to find the best move
 	const bestMove = await new Promise((resolve) => {
 		setTimeout(() => {
 			resolve(monteCarloEngine.run(currentState));
 		}, 0);
 	});
-	console.log(bestMove); //TEST
 
 	if (bestMove) {
 		const [x, y] = bestMove.split(',').map(Number); // Extract coordinates from the move string
