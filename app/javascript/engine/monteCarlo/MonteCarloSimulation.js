@@ -1,15 +1,17 @@
 // Logic for running the simulations
 import { territoryScoring } from '../../services/score/TerritoryScoring.js'
+import { gameStateManager } from '../../services/GameStateManager.js';
 
 class MonteCarloSimulation {
   static simulate(state) {
     let simulationState = state.clone();
+    console.log(simulationState);
     while (!MonteCarloSimulation.isTerminal(simulationState)) {
+      console.log(simulationState);
       const [x, y] = MonteCarloSimulation.getHeuristicMove(simulationState);
       const [a, b] = MonteCarloSimulation.getRandomMove(simulationState);
-      simulationState.applyMove(a, b);
+      simulationState.applyMove(x, y);
     }
-    //console.log(simulationState);
     return { move: `${simulationState.lastMoveX},${simulationState.lastMoveY}`, score: MonteCarloSimulation.score(simulationState) };
   }
 
@@ -32,6 +34,7 @@ class MonteCarloSimulation {
 
   //Heuristic Moves
   static getHeuristicMove(state) {
+    console.log(state);
     const availableMoves = [];
     for (let i = 0; i < state.boardMatrix.length; i++) {
       for (let j = 0; j < state.boardMatrix[i].length; j++) {
@@ -56,7 +59,7 @@ class MonteCarloSimulation {
     ];
     let score = 0;
     neighbors.forEach(([nx, ny]) => {
-      if (state.boardMatrix[nx] && state.boardMatrix[nx][ny] !== null) { //The problem may be here 
+      if (nx >= 0 && nx < gameStateManager.boardSize && ny >= 0 && ny < gameStateManager.boardSize && state.boardMatrix[nx][ny] !== null) { 
         score += 1; // Add points for being near another stone
       }
     });
@@ -64,7 +67,6 @@ class MonteCarloSimulation {
   }
 
   static score(state) {
-    console.log(state);
     return territoryScoring.countScore(state.boardMatrix, false);
   }
 }

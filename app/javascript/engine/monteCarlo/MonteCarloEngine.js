@@ -13,7 +13,7 @@ class MonteCarloEngine {
     for (let i = 0; i < this.numSimulations; i++) {
       const simulationResult = MonteCarloSimulation.simulate(state);
       simulationResults.push(simulationResult);
-    } //console.log(simulationResults) //TEST
+    }
 
     return MoveSelection.selectBestMove(simulationResults);
   }
