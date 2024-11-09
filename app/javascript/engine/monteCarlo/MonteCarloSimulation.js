@@ -1,6 +1,6 @@
 // Logic for running the simulations
-import { territoryScoring } from '../../services/score/TerritoryScoring.js'
-import { gameStateManager } from '../../services/GameStateManager.js';
+import { territoryScoring } from "../../services/score/TerritoryScoring.js";
+import { gameStateManager } from "../../services/GameStateManager.js";
 
 class MonteCarloSimulation {
   static simulate(state) {
@@ -12,7 +12,7 @@ class MonteCarloSimulation {
       const move = MonteCarloSimulation.getHeuristicMove(simulationState);
       if (move === null) {
         //No valid moves. Pass move
-        console.log('move === null');
+        console.log("move === null");
         simulationState.passCounter += 1;
       } else {
         const [x, y] = move;
@@ -20,7 +20,10 @@ class MonteCarloSimulation {
         simulationState.passCounter = 0; // Reset passCounter.
       }
     }
-    return { move: `${simulationState.lastMoveX},${simulationState.lastMoveY}`, score: MonteCarloSimulation.score(simulationState) };
+    return {
+      move: `${simulationState.lastMoveX},${simulationState.lastMoveY}`,
+      score: MonteCarloSimulation.score(simulationState),
+    };
   }
 
   static isTerminal(state) {
@@ -40,6 +43,17 @@ class MonteCarloSimulation {
     return availableMoves[Math.floor(Math.random() * availableMoves.length)];
   }
 
+  static async getHeuristicMove(state) {
+    return new Promise((resolve, reject) => {
+      const worker = new Worker("./heuristicWorker.js");
+      worker.postMessage(state);
+      worker.addEventListener("message", (e) => {
+        const selectedMove = e.data;
+        resolve(selectedMove);
+      });
+    });
+  }
+  /*
   //Heuristic Moves
   static getHeuristicMove(state) {
     const availableMoves = [];
@@ -73,13 +87,15 @@ class MonteCarloSimulation {
   static evaluateMove(x, y, state) {
     // Simple heuristic: prefer moves near existing stones
     const neighbors = [
-      [x - 1, y], [x + 1, y],
-      [x, y - 1], [x, y + 1]
+      [x - 1, y],
+      [x + 1, y],
+      [x, y - 1],
+      [x, y + 1]
     ];
     let score = 0;
 
     neighbors.forEach(([nx, ny]) => {
-      if (nx >= 0 && nx < gameStateManager.boardSize && ny >= 0 && ny < gameStateManager.boardSize) { 
+      if (nx >= 0 && nx < gameStateManager.boardSize && ny >= 0 && ny < gameStateManager.boardSize) {
         const cellValue = state.boardMatrix[nx][ny];
         if (cellValue !== null) {
           if (cellValue === state.currentPlayer) {
@@ -92,7 +108,7 @@ class MonteCarloSimulation {
     });
     return score;
   }
-
+*/
   static score(state) {
     return territoryScoring.countScore(state.boardMatrix, false);
   }
