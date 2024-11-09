@@ -33,6 +33,10 @@ export class RulesControl {
 		return this.boardMatrix[x][y];
 	}
 
+	getBoardMatrix() {
+		return this.boardMatrix;
+	}
+
 	updateBoardState() {
 		const currentBoardState = this.boardMatrix.flat().join('');
 		this.boardStatesHistory.push(currentBoardState);
