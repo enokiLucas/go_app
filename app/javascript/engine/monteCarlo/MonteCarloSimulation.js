@@ -10,6 +10,7 @@ class MonteCarloSimulation {
       const [a, b] = MonteCarloSimulation.getRandomMove(simulationState);
       simulationState.applyMove(x, y);*/
       const move = MonteCarloSimulation.getHeuristicMove(simulationState);
+      console.log(move);
       if (move === null) {
         //No valid moves. Pass move
         console.log("move === null");
@@ -45,7 +46,9 @@ class MonteCarloSimulation {
 
   static async getHeuristicMove(state) {
     return new Promise((resolve, reject) => {
-      const worker = new Worker("./heuristicWorker.js");
+      const workerPath = new URL("heuristicWorker.js", import.meta.url);
+      const worker = new Worker(workerPath);
+      //const worker = new Worker("./heuristicWorker.js");
       worker.postMessage(state);
       worker.addEventListener("message", (e) => {
         const selectedMove = e.data;

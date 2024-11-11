@@ -1,9 +1,10 @@
 // heuristicWorker.js
 self.addEventListener(
   "message",
-  function (e) {
+  (e) => {
     const state = e.data;
 
+    console.log("hello from worker");
     const availableMoves = [];
     for (let i = 0; i < state.boardMatrix.length; i++) {
       for (let j = 0; j < state.boardMatrix[i].length; j++) {
