@@ -5,21 +5,23 @@ import { gameStateManager } from "../../services/GameStateManager.js";
 class MonteCarloSimulation {
   static simulate(state) {
     let simulationState = state.clone();
-    while (!MonteCarloSimulation.isTerminal(simulationState)) {
+    if (!MonteCarloSimulation.isTerminal(simulationState)) {
       /*const [x, y] = MonteCarloSimulation.getHeuristicMove(simulationState);
       const [a, b] = MonteCarloSimulation.getRandomMove(simulationState);
       simulationState.applyMove(x, y);*/
       const move = MonteCarloSimulation.getHeuristicMove(simulationState);
       console.log(move);
-      if (move === null) {
-        //No valid moves. Pass move
-        console.log("move === null");
-        simulationState.passCounter += 1;
-      } else {
-        const [x, y] = move;
-        simulationState.applyMove(x, y);
-        simulationState.passCounter = 0; // Reset passCounter.
-      }
+      move.then((result) => {
+        if (result === null) {
+          //No valid moves. Pass move
+          console.log("move === null");
+          simulationState.passCounter += 1;
+        } else {
+          const [x, y] = result;
+          simulationState.applyMove(x, y);
+          simulationState.passCounter = 0; // Reset passCounter.
+        }
+      });
     }
     return {
       move: `${simulationState.lastMoveX},${simulationState.lastMoveY}`,
