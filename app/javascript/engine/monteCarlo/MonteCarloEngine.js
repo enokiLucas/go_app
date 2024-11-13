@@ -1,10 +1,10 @@
 // Main engine that coordinates the simulation and selection
 
-import { MonteCarloSimulation } from './MonteCarloSimulation.js';
-import { MoveSelection } from './MoveSelection.js';
+import { MonteCarloSimulation } from "./MonteCarloSimulation.js";
+import { MoveSelection } from "./MoveSelection.js";
 
 class MonteCarloEngine {
-  constructor(numSimulations = 1) {
+  constructor(numSimulations = 5) {
     this.numSimulations = numSimulations;
   }
 
@@ -13,7 +13,8 @@ class MonteCarloEngine {
     for (let i = 0; i < this.numSimulations; i++) {
       const simulationResult = MonteCarloSimulation.simulate(state);
       simulationResults.push(simulationResult);
-    } console.log(simulationResults) // TEST
+    }
+    console.log(simulationResults); // TEST
 
     return MoveSelection.selectBestMove(simulationResults);
   }
