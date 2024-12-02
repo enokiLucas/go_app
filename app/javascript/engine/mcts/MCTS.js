@@ -1,4 +1,3 @@
-// mcts/MCTS.js
 import { Node } from './node.js';
 import { ScoreCalculator } from './scoreCalculator.js';
 
@@ -9,6 +8,10 @@ class MCTS {
     this.scoreCalculator = new ScoreCalculator();
   }
 
+  /* Main Loop
+  * Perfoms a specified number of iterations where it selects a node,
+  * sets up a simulation from that node, and then update the tree.
+  */
   run() {
     for (let i = 0; i < this.iterations; i++) {
       let node = this.selection(this.root);
