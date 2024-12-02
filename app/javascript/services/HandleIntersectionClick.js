@@ -5,8 +5,6 @@ import { convertToSGFPosition, getPlayerSGFColor } from '../utils/SGFUtil.js';
 import { EDGE_MARGIN, LENGTH_SQUARE } from '../utils/constants.js';
 import { captureRule } from './rules/CaptureRule.js';
 import { influenceMap } from './InfluenceMap.js';
-import { monteCarloEngine } from '../engine/monteCarlo/MonteCarloEngine.js';
-import { MonteCarloState } from '../engine/monteCarlo/MonteCarloState.js';
 
 let lastMoveMetadata = {}; // Temporary storage for metadata outside of handleIntersectionClick
 
@@ -63,16 +61,17 @@ function executeMove(board, ghostStone, x, y, boardX, boardY) {
 }
 
 /**
- * 
+ *
  * @param {any} board Board
  * @param {any} boardX X coordinate relative to the size of the board. Coordinate of the previous move made by the player.
  * @param {any} boardY Y coordinate relative to the size of the board. Coordinate of the previous move made by the player.
  * @param {any} ghostStone Transparent stone that marks the intersection for the player.
- * @returns 
+ * @returns
  */
+ /*
 async function aiMakeMove(board, boardX, boardY, ghostStone) {
 	const currentState = new MonteCarloState(rulesControl.boardMatrix, gameStateManager.currentPlayer, gameStateManager.getPassCounter, boardX, boardY);
-	
+
 	// Run the Monte Carlo simulation asynchronously to find the best move
 	const bestMove = await new Promise((resolve) => {
 		setTimeout(() => {
@@ -91,6 +90,7 @@ async function aiMakeMove(board, boardX, boardY, ghostStone) {
 		console.log("AI couldn't find a valid move.");
 	}
 }
+*/
 
 export async function handleIntersectionClick(board, event, ghostStone) {
 	// Save the coordinates of the event.
@@ -102,11 +102,11 @@ export async function handleIntersectionClick(board, event, ghostStone) {
 	const boardY = (y - EDGE_MARGIN) / LENGTH_SQUARE;
 
 	executeMove(board, ghostStone, x, y, boardX, boardY);
-
+/*
 	const aiPlayer = gameStateManager.aiPlayer;
 	if (aiPlayer) {
 		await aiMakeMove(board, boardX, boardY, ghostStone);
-	}
+		}*/
 
 	const boardMatrix = rulesControl.getBoardMatrix();
 	console.log(boardMatrix);
