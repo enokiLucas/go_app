@@ -9,6 +9,7 @@ class GameStateManager { //Remember to fix SGF TODO
 		this.scoreCounter = { black: 0, white: 0}; // Save the score.
 		this.passCounter = 0; // Track consecutive passes
 		this._aiPlayer = true;
+    this._isTerminal = false;
 	}
 
 	get timerControler() {
@@ -43,6 +44,15 @@ class GameStateManager { //Remember to fix SGF TODO
 		this._aiPlayer = bool;
 	}
 
+	get isTerminal() {
+    return this._isTerminal;
+	}
+
+	set isTerminal(bool) {
+    this._isTerminal = bool;
+    console.log(this._isTerminal);// TEST
+	}
+
 	// Function to increment capture count
 	addCaptures(playerColor, captures) {
 		const player = playerColor === 'black' ? 'white' : 'black';
@@ -70,6 +80,7 @@ class GameStateManager { //Remember to fix SGF TODO
 		this.captureCounter = { black: 0, white: 0 };
 		this.scoreCounter = { black: 0, white: 0};
 		this.passCounter = 0;
+    this._isTerminal = false; console.log(this._isTerminal);
 		document.dispatchEvent(new CustomEvent('new-game'));
 	}
 
