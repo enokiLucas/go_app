@@ -1,8 +1,9 @@
 import { exploreTerritory } from '../../utils/ScoreUtil.js';
+import { rulesControl } from '../RulesControl.js';
 
 class TerritoryScoring {
   constructor() {
-    //this.scoringBoard = rulesControl.createSimulatedBoardMatrix(); // Assuming this creates a deep copy of the board
+    this.scoringBoard = rulesControl.createSimulatedBoardMatrix(); // Assuming this creates a deep copy of the board
     this.resetTerritoriesCount();
     this.blackTerritory = 0;
     this.whiteTerritory = 0;
@@ -40,7 +41,7 @@ class TerritoryScoring {
    * 	true: add the territory to the score
    * 	false: does not add territory to the score.
    */
-  countScore(scoringBoard, bool) {
+  countScore(scoringBoard = this.scoringBoard, bool) {
     for (let x = 0; x < scoringBoard.length; x++) {
       for (let y = 0; y < scoringBoard[x].length; y++) {
         if (scoringBoard[x][y] === null && !this.visited.has(`${x},${y}`)) {
