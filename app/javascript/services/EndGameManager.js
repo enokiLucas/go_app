@@ -26,6 +26,7 @@ class EndGameManager {
 				break;
 				// Add other cases as needed
 		}
+    gameStateManager.isTerminal = true;
 		this.endGame();
 	}
 
