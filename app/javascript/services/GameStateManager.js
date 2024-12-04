@@ -48,7 +48,7 @@ class GameStateManager { //Remember to fix SGF TODO
 		const player = playerColor === 'black' ? 'white' : 'black';
 		this.captureCounter[player] += captures;
 		document.dispatchEvent(new CustomEvent('captures-changed', {
-			detail: { 
+			detail: {
 				player: player,
 				captures: this.captureCounter[player] }
 		}));
