@@ -6,6 +6,7 @@ import { rulesControl } from './RulesControl.js';
 class EndGameManager {
 	constructor() {
 		this.initializeEventListeners();
+    this.endMessage = ['The game has ended!\n'];
 	}
 
 	initializeEventListeners() {
@@ -33,13 +34,13 @@ class EndGameManager {
 	handleResignation(player) {
 		// Handle resignation logic
 		const winner = player === 'black' ? 'white' : 'black';
-		alert(`${winner} wins by resignation!`);
+		this.endMessage.push(`${winner} wins by resignation!`);
 	}
 
 	handleTimeout(player) {
 		// Handle time-out logic
 		const winner = player === 'black' ? 'white' : 'black';
-		alert(`${winner} wins by timeout!`);
+		this.endMessage.push(`${winner} wins by timeout!`);
 	}
 
 	handleConsecutivePasses() {
@@ -49,8 +50,10 @@ class EndGameManager {
 
 	endGame() {
 		// Finalize the game
-		alert("The game has ended.");
+		alert(this.endMessage);
 		// Additional end game logic
+    this.endMessage = [];
+    this.endMessage.push('The game has ended!');
 	}
 
 	calculateFinalScore() {
@@ -78,8 +81,8 @@ class EndGameManager {
 			winner = 'white';
 		}
 
-		alert(`Final Score - Black: ${finalBlackScore}, White: ${finalWhiteScore}`);
-		alert(`${winner} wins the game!`);
+		this.endMessage.push(`Final Score - Black: ${finalBlackScore}, White: ${finalWhiteScore}`);
+		this.endMessage.push(`${winner} wins the game!`);
 	}
 
 	removeDeadStones(deadStones) {
