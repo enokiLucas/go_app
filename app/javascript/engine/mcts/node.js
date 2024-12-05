@@ -8,7 +8,7 @@ class Node {
     this.wins = 0; // Total wins from this node
   }
 
-  isFullyExpanded() {
+  isFullyExpanded() { // Fix this one
     return this.children.length === this.getPossibleMoves().length; // All possible moves have been explored
   }
 
@@ -16,7 +16,7 @@ class Node {
     return this.gameState.isTerminal(); // Check if the game is over
   }
 
-  getPossibleMoves() {
+  getPossibleMoves() { // need a function for this one
     return this.gameState.getAvailableMoves(); // Returns available moves for this game state
   }
 
@@ -31,9 +31,19 @@ class Node {
     return childNode; // Return the newly created node
   }
 
-  bestChild() {
-    // UCB1 or other logic to find the best child based on results
-    return this.children.reduce((best, child) => (child.wins / child.visitCount > best.wins / best.visitCount ? child : best), this.children[0]);
+  bestChild(c = Math.sqrt(2)) {
+    let bestScore = -Infinity;
+    let bestChild = null;
+    for (const child of this.children) {
+      const exploitation = child.wins / child.visitCount;
+      const exploration = Math.sqrt(Math.log(this.visitCount) / child.visitCount);
+      const ucb1 = exploitation + c * exploration;
+      if (ucb1 > bestScore) {
+        bestScore = ucb1;
+        bestChild = child;
+      }
+    }
+    return bestChild;
   }
 
   updateStats(reward) {

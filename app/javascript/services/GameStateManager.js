@@ -80,7 +80,7 @@ class GameStateManager { //Remember to fix SGF TODO
 		this.captureCounter = { black: 0, white: 0 };
 		this.scoreCounter = { black: 0, white: 0};
 		this.passCounter = 0;
-    this._isTerminal = false; console.log(this._isTerminal);
+    this._isTerminal = false;
 		document.dispatchEvent(new CustomEvent('new-game'));
 	}
 

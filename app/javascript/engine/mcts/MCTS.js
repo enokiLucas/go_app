@@ -1,11 +1,10 @@
 import { Node } from './node.js';
-import { ScoreCalculator } from './scoreCalculator.js';
+import { territoryScoring } from '../../services/score/TerritoryScoring.js';
 
 class MCTS {
   constructor(gameState, iterations) {
     this.root = new Node(gameState);
     this.iterations = iterations;
-    this.scoreCalculator = new ScoreCalculator();
   }
 
   /* Main Loop
@@ -35,7 +34,7 @@ class MCTS {
       const randomMove = simulatedGameState.getRandomMove();
       simulatedGameState.applyMove(randomMove);
     }
-    return this.scoreCalculator.countScore(simulatedGameState.board); // Assuming this returns a numeric outcome
+    //return this.scoreCalculator.countScore(simulatedGameState.board); // Assuming this returns a numeric outcome
   }
 
   backpropagation(node, reward) {
