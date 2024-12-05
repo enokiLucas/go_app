@@ -1,9 +1,9 @@
-import { Node } from './node.js';
+import { MCTSnode } from './MCTSnode.js';
 import { territoryScoring } from '../../services/score/TerritoryScoring.js';
 
-class MCTS {
+export class MCTS {
   constructor(gameState, iterations) {
-    this.root = new Node(gameState);
+    this.root = new MCTSnode(gameState);
     this.iterations = iterations;
   }
 
@@ -48,5 +48,3 @@ class MCTS {
     return this.root.bestChild().move; // Choose the best child of the root based on visit count or average score
   }
 }
-
-export default MCTS;

@@ -62,9 +62,26 @@ function executeMove(board, ghostStone, x, y, boardX, boardY) {
 	}
 }
 
-function aiMakeMove() {
+async function aiMakeMove() {
   const currentState = new mctsState(rulesControl.boardMatrix, gameStateManager.currentPlayer, gameStateManager.getPassCounter(), boardX, boardY);
-  const mcts = new MCTS()
+
+  // Run the Monte Carlo simulation asynchronously to find the best move
+	const bestMove = await new Promise((resolve) => {
+		setTimeout(() => {
+			resolve(MCTS.run(currentState));
+		}, 0);
+	});
+
+	if (bestMove) {
+		const [x, y] = bestMove.split(',').map(Number); // Extract coordinates from the move string
+		const cx = EDGE_MARGIN + (LENGTH_SQUARE * x);
+		const cy = EDGE_MARGIN + (LENGTH_SQUARE * y);
+		executeMove(board, ghostStone, cx, cy, x, y);
+		console.log(`AI chose move at (${x}, ${y})`);
+		return [cx, cy];
+	} else {
+		console.log("AI couldn't find a valid move.");
+	}
 }
 
 
