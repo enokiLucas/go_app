@@ -69,6 +69,14 @@ class GameStateManager { //Remember to fix SGF TODO
 		return this.captureCounter;
 	}
 
+	getPassCounter() {
+		return this.passCounter;
+	}
+
+	getScoreCounter() {
+		return this.scoreCounter;
+	}
+
 	resetPlayer() {
 		this._currentPlayer = 'black'; // Reset the players turns
 	}
