@@ -34,13 +34,13 @@ class EndGameManager {
 	handleResignation(player) {
 		// Handle resignation logic
 		const winner = player === 'black' ? 'white' : 'black';
-		this.endMessage.push(`${winner} wins by resignation!`);
+		this.endMessage.push(`${winner} wins by resignation!\n`);
 	}
 
 	handleTimeout(player) {
 		// Handle time-out logic
 		const winner = player === 'black' ? 'white' : 'black';
-		this.endMessage.push(`${winner} wins by timeout!`);
+		this.endMessage.push(`${winner} wins by timeout!\n`);
 	}
 
 	handleConsecutivePasses() {
@@ -51,9 +51,10 @@ class EndGameManager {
 	endGame() {
 		// Finalize the game
 		alert(this.endMessage);
+    gameStateManager.isTerminal = true;
 		// Additional end game logic
     this.endMessage = [];
-    this.endMessage.push('The game has ended!');
+    this.endMessage.push('The game has ended!\n');
 	}
 
 	calculateFinalScore() {
@@ -82,7 +83,7 @@ class EndGameManager {
 		}
 
 		this.endMessage.push(`Final Score - Black: ${finalBlackScore}, White: ${finalWhiteScore}`);
-		this.endMessage.push(`${winner} wins the game!`);
+		this.endMessage.push(`${winner} wins the game!\n`);
 	}
 
 	removeDeadStones(deadStones) {
