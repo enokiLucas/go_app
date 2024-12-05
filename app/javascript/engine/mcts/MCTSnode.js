@@ -1,4 +1,4 @@
-class Node {
+export class MCTSnode {
   constructor(gameState, parent = null, move = null) {
     this.gameState = gameState; // Current state of the game
     this.parent = parent; // Parent node
@@ -51,5 +51,3 @@ class Node {
     this.wins += reward; // Adjust for how you want to handle wins
   }
 }
-
-export default Node;
