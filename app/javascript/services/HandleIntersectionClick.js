@@ -5,6 +5,8 @@ import { convertToSGFPosition, getPlayerSGFColor } from '../utils/SGFUtil.js';
 import { EDGE_MARGIN, LENGTH_SQUARE } from '../utils/constants.js';
 import { captureRule } from './rules/CaptureRule.js';
 import { influenceMap } from './InfluenceMap.js';
+import { MCTS } from '../engine/mcts/MCTS.js';
+import { mctsState } from '../engine/mcts/MCTSstate.js';
 
 let lastMoveMetadata = {}; // Temporary storage for metadata outside of handleIntersectionClick
 
@@ -58,6 +60,11 @@ function executeMove(board, ghostStone, x, y, boardX, boardY) {
 		// Handle invalid move, e.g., display error message
 		alert(validationResult.message);
 	}
+}
+
+function aiMakeMove() {
+  const currentState = new mctsState(rulesControl.boardMatrix, gameStateManager.currentPlayer, gameStateManager.getPassCounter(), boardX, boardY);
+  const mcts = new MCTS()
 }
 
 
