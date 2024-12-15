@@ -52,6 +52,8 @@ class mctsState {
     return arr1.length === arr2.length && arr1.every((val, index) => val === arr2[index]);
   }
 
+
+  //Chack if both this functions are the same
   getAvailableMoves() {
     const allMoves = [];
     for (let i = 0; i < gameStateManager.boardSize; i++) {
@@ -66,6 +68,18 @@ class mctsState {
       )
     );
     return movesAvailable;
+  }
+
+  getPossibleMoves() {
+    const availableMoves = [];
+    for (let i = 0; i < this.board.length; i++) {
+      for (let j = 0; j < this.board[i].length; j++) {
+        if (this.board[i][j] === null) { // Assuming null indicates an empty cell
+          availableMoves.push([i, j]); // Collect the coordinates of valid moves
+        }
+      }
+    }
+    return availableMoves; // Returns an array of coordinates representing valid moves
   }
 }
 
