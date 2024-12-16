@@ -67,7 +67,6 @@ export class RulesControl {
 	 */
 	isMoveValid(x, y, matrix, player) {
 		const potentialCaptures = captureRule.analyzeCaptures(x, y, matrix, player);
-
 		// If captures are possible, check for Ko due to these captures
 		if (potentialCaptures.length > 0) {
 			if (koRule.checkForKo(x, y, player)) {
@@ -77,13 +76,11 @@ export class RulesControl {
 			// Valid capture, not a Ko
 			return { isValid: true, captures: potentialCaptures, ruleBreak: 0, message: 'Capture is valid.' };
 		}
-
 		// No captures, check for suicide
 		if (suicideRule.checkForSuicide(x, y, player, matrix)) {
 			// Move is invalid due to suicide
 			return { isValid: false, captures: [], ruleBreak: 2, message: 'Invalid move due to suicide.' };
 		}
-
 		// Move is valid if it's neither capture-related Ko nor suicide
 		return { isValid: true, captures: [], ruleBreak: 0, message: 'Move is valid.' };
 	}

@@ -10,8 +10,7 @@ class CaptureRule {
 	analyzeCaptures(x, y, matrix) {
 		const potentialCaptures = [];
 		// Identify opposite color groups around the last move
-		const oppositeColorGroups = identifyGroups(x, y, matrix, true);
-		//console.log(oppositeColorGroups); // TEST
+		const oppositeColorGroups = identifyGroups(x, y, matrix, true); // <=== Error is here
 
 		oppositeColorGroups.forEach(group => {
 			// Check if the group has no liberties
@@ -20,8 +19,7 @@ class CaptureRule {
 				potentialCaptures.push(...group);
 			}
 		});
-
-		//console.log(potentialCaptures); //test
+		console.log('stop 7');
 		return potentialCaptures; // Return all groups that would be captured
 	}
 

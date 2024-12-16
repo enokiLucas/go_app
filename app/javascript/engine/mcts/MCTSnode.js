@@ -13,7 +13,7 @@ export class MCTSnode {
   }
 
   isTerminal() {
-    return this.gameState.isTerminal(); // Check if the game is over
+    return this.gameState.isTerminal; // Check if the game is over
   }
 
   getPossibleMoves() { // need a function for this one
@@ -23,9 +23,8 @@ export class MCTSnode {
   expand() {
     const availableMoves = this.getPossibleMoves();
     if (availableMoves.length === 0) return this;
-
     const move = availableMoves[Math.floor(Math.random() * availableMoves.length)];
-    const newGameState = this.gameState.clone().applyMove(move);
+    const newGameState = this.gameState.clone().applyMove(move[0], move[1]);
     const childNode = new Node(newGameState, this, move);
     this.children.push(childNode);
     return childNode; // Return the newly created node

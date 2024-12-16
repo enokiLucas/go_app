@@ -1,4 +1,3 @@
-import { rulesControl } from '../services/RulesControl.js';
 import { gameStateManager } from '../services/GameStateManager.js';
 
 export function toggleColor(color) {

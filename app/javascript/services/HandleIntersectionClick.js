@@ -62,13 +62,21 @@ function executeMove(board, ghostStone, x, y, boardX, boardY) {
 	}
 }
 
-async function aiMakeMove() {
-  const currentState = new mctsState(rulesControl.boardMatrix, gameStateManager.currentPlayer, gameStateManager.getPassCounter(), boardX, boardY);
+async function aiMakeMove(board, boardX, boardY, ghostStone, movesHistory) {
+  const currentState = new mctsState(
+    rulesControl.boardMatrix,
+    gameStateManager.currentPlayer,
+    gameStateManager.getPassCounter(),
+    boardX,
+    boardY,
+    movesHistory
+  );
+  const mcts = new MCTS(currentState, 5);
 
   // Run the Monte Carlo simulation asynchronously to find the best move
 	const bestMove = await new Promise((resolve) => {
 		setTimeout(() => {
-			resolve(MCTS.run(currentState));
+			resolve(mcts.run());
 		}, 0);
 	});
 
@@ -95,7 +103,6 @@ export async function handleIntersectionClick(board, event, ghostStone) {
 	const boardY = (y - EDGE_MARGIN) / LENGTH_SQUARE;
 
 	executeMove(board, ghostStone, x, y, boardX, boardY);
-
-	const boardMatrix = rulesControl.getBoardMatrix();
-	console.log(boardMatrix);
+  const moveHistory = gameStateManager.movesHistory;
+	await aiMakeMove(board, boardX, boardY, ghostStone, moveHistory);
 }
