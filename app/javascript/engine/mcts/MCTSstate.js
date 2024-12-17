@@ -35,8 +35,6 @@ class mctsState {
   }
 
   applyMove(x, y) {
-    console.log('value of X: ', x);
-    console.log('value of Y: ', y);
     const isValid = rulesControl.isMoveValid(x, y, this.boardMatrix, this.currentPlayer); // <==== ERROR is here
     if (isValid.isValid) {
       this.boardMatrix[x][y] = this.currentPlayer;

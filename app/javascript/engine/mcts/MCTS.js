@@ -21,14 +21,6 @@ export class MCTS {
   }
 
   selection(node) {
-    console.log('node.isFullyExpanded', node.isFullyExpanded()); // This one is returning false, this is why it is skipping the loop
-    console.log('node.isTerminal', node.isTerminal()); // Is returning that isTerminal is not a function of node
-
-    /*
-      what are these functions?
-      are they being called correctly?
-      */
-
     while (node.isFullyExpanded() && !node.isTerminal()) {
       node = node.bestChild();
     }

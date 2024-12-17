@@ -19,7 +19,6 @@ class CaptureRule {
 				potentialCaptures.push(...group);
 			}
 		});
-		console.log('stop 7');
 		return potentialCaptures; // Return all groups that would be captured
 	}
 
