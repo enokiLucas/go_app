@@ -8,7 +8,7 @@ export class MCTSnode {
     this.wins = 0; // Total wins from this node
   }
 
-  isFullyExpanded() { // Fix this one
+  isFullyExpanded() {
     return this.children.length === this.getPossibleMoves().length; // All possible moves have been explored
   }
 
@@ -25,7 +25,7 @@ export class MCTSnode {
     if (availableMoves.length === 0) return this;
     const move = availableMoves[Math.floor(Math.random() * availableMoves.length)];
     const newGameState = this.gameState.clone().applyMove(move[0], move[1]);
-    const childNode = new Node(newGameState, this, move);
+    const childNode = new MCTSnode(newGameState, this, move);
     this.children.push(childNode);
     return childNode; // Return the newly created node
   }
