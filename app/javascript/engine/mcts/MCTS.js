@@ -12,8 +12,9 @@ export class MCTS {
   * sets up a simulation from that node, and then update the tree.
   */
   run() {
+    //console.log(this.root)
     for (let i = 0; i < this.iterations; i++) {
-      let node = this.selection(this.root);
+      let node = this.selection(this.root); console.log('hello');
       let reward = this.simulation(node);
       this.backpropagation(node, reward);
     }
@@ -21,13 +22,14 @@ export class MCTS {
   }
 
   selection(node) {
-    while (node.isFullyExpanded() && !node.isTerminal()) {
+    while (!node.isFullyExpanded() && !node.isTerminal()) {
       node = node.bestChild();
     }
     return node.expand();
   }
 
   simulation(node) {
+    //console.log(node);
     const simulatedGameState = node.gameState.clone();
     // Choose random moves until the end of the game
     while (!simulatedGameState.isTerminal()) {
