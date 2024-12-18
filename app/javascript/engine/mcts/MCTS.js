@@ -14,7 +14,7 @@ export class MCTS {
   run() {
     //console.log(this.root)
     for (let i = 0; i < this.iterations; i++) {
-      let node = this.selection(this.root); console.log('hello');
+      let node = this.selection(this.root);
       let reward = this.simulation(node);
       this.backpropagation(node, reward);
     }
@@ -22,10 +22,12 @@ export class MCTS {
   }
 
   selection(node) {
+    console.log(node);
     while (!node.isFullyExpanded() && !node.isTerminal()) {
-      node = node.bestChild();
+      node = node.expand();
+      console.log(node);
     }
-    return node.expand();
+    return node.bestChild();
   }
 
   simulation(node) {
