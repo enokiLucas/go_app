@@ -12,7 +12,7 @@ export class MCTS {
   * sets up a simulation from that node, and then update the tree.
   */
   run() {
-    //console.log(this.root)
+    console.log(this.root)
     for (let i = 0; i < this.iterations; i++) {
       let node = this.selection(this.root);
       let reward = this.simulation(node);
@@ -22,10 +22,10 @@ export class MCTS {
   }
 
   selection(node) {
-    console.log(node);
+    //console.log(node);
     while (!node.isFullyExpanded() && !node.isTerminal()) {
       node = node.expand();
-      console.log(node);
+      //console.log(node);
     }
     return node.bestChild();
   }
@@ -38,7 +38,7 @@ export class MCTS {
       const randomMove = simulatedGameState.getRandomMove();
       simulatedGameState.applyMove(randomMove);
     }
-    //return this.scoreCalculator.countScore(simulatedGameState.board); // Assuming this returns a numeric outcome
+    return territoryScoring.countScore(simulatedGameState.board, false); // Assuming this returns a numeric outcome
   }
 
   backpropagation(node, reward) {
