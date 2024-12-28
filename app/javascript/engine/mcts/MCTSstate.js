@@ -31,6 +31,7 @@ class mctsState {
     clone.passCounter = this.passCounter;
     clone.lastMoveX = this.lastMoveX;
     clone.lastMoveY = this.lastMoveY;
+    console.log('clone: ', clone);
     return clone;
   }
 
