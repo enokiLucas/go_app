@@ -14,19 +14,30 @@ export class MCTS {
   run() {
     console.log(this.root)
     for (let i = 0; i < this.iterations; i++) {
+      console.log('stop 5');
       let node = this.selection(this.root);
+      console.log('stop 6');
       let reward = this.simulation(node);
+      console.log('stop 7');
       this.backpropagation(node, reward);
+      console.log('stop 8');
     }
     return this.getBestMove();
   }
 
   selection(node) {
-    //console.log(node);
+    console.log('selection => node: ', node);
+    let test_i = 0; // TEST variable to keep track of the number of iterations.
     while (!node.isFullyExpanded() && !node.isTerminal()) {
+      console.log('start loop: ', test_i);
+      test_i = + 1;
+      console.log('stop 9');
       node = node.expand();
-      //console.log(node);
+      console.log('stop 10');
+      console.log(node);
+      console.log('test_i: ', test_i);
     }
+    console.log('stop 11');
     return node.bestChild();
   }
 

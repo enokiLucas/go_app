@@ -9,10 +9,12 @@ export class MCTSnode {
   }
 
   isFullyExpanded() {
+    console.log('stop 5.1');
     return this.children.length === this.getPossibleMoves().length; // All possible moves have been explored
   }
 
   isTerminal() {
+    console.log('stop 5.2');
     return this.gameState.isTerminal; // Check if the game is over
   }
 
@@ -25,7 +27,7 @@ export class MCTSnode {
     const availableMoves = this.getPossibleMoves();
     if (availableMoves.length === 0) return this;
     const move = availableMoves[Math.floor(Math.random() * availableMoves.length)];
-    const newGameState = this.gameState.clone().applyMove(move[0], move[1]);
+    const newGameState = this.gameState.clone();
     const childNode = new MCTSnode(newGameState, this, move);
     this.children.push(childNode);
     return childNode; // Return the newly created node
