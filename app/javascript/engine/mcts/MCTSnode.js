@@ -19,7 +19,6 @@ export class MCTSnode {
   }
 
   getPossibleMoves() { // need a function for this one
-    console.log('gameState: ', this.gameState);
     return this.gameState.getPossibleMoves(); // Returns available moves for this game state
   }
 
