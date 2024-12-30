@@ -12,7 +12,7 @@ export class MCTS {
   * sets up a simulation from that node, and then update the tree.
   */
   run() {
-    console.log(this.root)
+    //console.log(this.root)
     for (let i = 0; i < this.iterations; i++) {
       console.log('stop 5');
       let node = this.selection(this.root);
@@ -26,18 +26,23 @@ export class MCTS {
   }
 
   selection(node) {
-    console.log('selection => node: ', node);
+    //console.log('node: ', node);
     let test_i = 0; // TEST variable to keep track of the number of iterations.
-    while (!node.isFullyExpanded() && !node.isTerminal()) {
-      console.log('start loop: ', test_i);
-      test_i = + 1;
-      console.log('stop 9');
+    while (!node.isFullyExpanded() && !node.isTerminal() && test_i < 6) {
+      //console.log('start loop: ', test_i);
+      //console.log('stop 9');
+      console.log('node before expand(): ', node);
       node = node.expand();
-      console.log('stop 10');
-      console.log(node);
-      console.log('test_i: ', test_i);
+      //console.log('stop 10');
+      console.log('node after expand(): ', node);
+      //console.log('test_i: ', test_i);
+      if (test_i === 5) {
+        break;
+      }
+      test_i = + 1;
     }
     console.log('stop 11');
+    console.log('node.bestChild: ', node.bestChild());
     return node.bestChild();
   }
 
