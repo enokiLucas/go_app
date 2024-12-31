@@ -71,6 +71,38 @@ async function aiMakeMove(board, boardX, boardY, ghostStone, movesHistory) {
     boardY,
     movesHistory
   );
+
+  // Create a new Worker
+  const worker = new Worker(new URL('./mctsWorker.js', import.meta.url));
+
+  // Send the initial data to the worker
+  worker.postMessage({
+    gameState: currentState,
+    iterations: 2 // Adjust the number of iterations as needed
+  });
+
+  // Handle messages from the worker
+  worker.onmessage = (event) => {
+    const bestMove = event.data; // Get the best move from the MCTS calculation
+    if (bestMove) {
+      const [x, y] = bestMove.split(',').map(Number); // Extract coordinates from the move string
+      const cx = EDGE_MARGIN + (LENGTH_SQUARE * x);
+      const cy = EDGE_MARGIN + (LENGTH_SQUARE * y);
+      executeMove(board, ghostStone, cx, cy, x, y);
+      console.log(`AI chose move at (${x}, ${y})`);
+    } else {
+      console.log("AI couldn't find a valid move.");
+    }
+    worker.terminate(); // Terminate the worker after use
+  };
+
+  // Optionally handle errors
+  worker.onerror = (error) => {
+    console.error("Worker error:", error);
+    worker.terminate(); // Terminate if there's an error
+  };
+
+  /*
   const mcts = new MCTS(currentState, 5);
 
   // Run the Monte Carlo simulation asynchronously to find the best move
@@ -90,6 +122,7 @@ async function aiMakeMove(board, boardX, boardY, ghostStone, movesHistory) {
 	} else {
 		console.log("AI couldn't find a valid move.");
 	}
+	*/
 }
 
 
