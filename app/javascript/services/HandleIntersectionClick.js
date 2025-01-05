@@ -73,7 +73,7 @@ async function aiMakeMove(board, boardX, boardY, ghostStone, movesHistory) {
   );
 
   // Create a new Worker
-  const worker = new Worker(new URL('./mctsWorker.js', import.meta.url));
+  const worker = new Worker(new URL('../engine/mcts/MCTSworker.js', import.meta.url));
 
   // Send the initial data to the worker
   worker.postMessage({
