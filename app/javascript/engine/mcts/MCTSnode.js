@@ -9,8 +9,8 @@ export class MCTSnode {
   }
 
   isFullyExpanded() {
-    console.log('stop 5.1');
-    return this.children.length === this.getPossibleMoves().length; // All possible moves have been explored
+    console.log('stop 5.1'); console.log(this.gameState);
+    return this.children.length === this.getPossibleMoves.length; // All possible moves have been explored
   }
 
   isTerminal() {
@@ -19,7 +19,7 @@ export class MCTSnode {
   }
 
   getPossibleMoves() { // need a function for this one
-    return this.gameState.getPossibleMoves(); // Returns available moves for this game state
+    return this.gameState.getPossibleMoves; // Returns available moves for this game state
   }
 
   expand() {
