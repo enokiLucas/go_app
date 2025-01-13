@@ -87,6 +87,8 @@ async function aiMakeMove(board, boardX, boardY, ghostStone, movesHistory) {
   // Handle messages from the worker
   worker.onmessage = (event) => {
     const bestMove = event.data; // Get the best move from the MCTS calculation
+    console.log(bestMove);
+    console.log('type of bestMove: ', typeof bestMove);
     if (bestMove) {
       const [x, y] = bestMove.split(',').map(Number); // Extract coordinates from the move string
       const cx = EDGE_MARGIN + (LENGTH_SQUARE * x);
