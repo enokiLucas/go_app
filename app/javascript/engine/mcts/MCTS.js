@@ -28,12 +28,14 @@ export class MCTS {
   selection(node) {
     //console.log('node: ', node);
     let test_i = 0; // TEST variable to keep track of the number of iterations.
+    console.log('node.isFullyExpanded: ', node.isFullyExpanded());
+    console.log('node.isTerminal: ', node.isTerminal());
     while (!node.isFullyExpanded() && !node.isTerminal() && test_i < 6) {
       //console.log('start loop: ', test_i);
-      //console.log('stop 9');
+      console.log('stop 9');
       console.log('node before expand(): ', node);
       node = node.expand();
-      //console.log('stop 10');
+      console.log('stop 10');
       console.log('node after expand(): ', node);
       //console.log('test_i: ', test_i);
       if (test_i === 5) {

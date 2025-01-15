@@ -5,8 +5,6 @@ import { convertToSGFPosition, getPlayerSGFColor } from '../utils/SGFUtil.js';
 import { EDGE_MARGIN, LENGTH_SQUARE } from '../utils/constants.js';
 import { captureRule } from './rules/CaptureRule.js';
 import { influenceMap } from './InfluenceMap.js';
-import { MCTS } from '../engine/mcts/MCTS.js';
-import { mctsState } from '../engine/mcts/MCTSstate.js';
 
 let lastMoveMetadata = {}; // Temporary storage for metadata outside of handleIntersectionClick
 
@@ -63,14 +61,14 @@ function executeMove(board, ghostStone, x, y, boardX, boardY) {
 }
 
 async function aiMakeMove(board, boardX, boardY, ghostStone, movesHistory) {
-  const currentState = new mctsState(
-    rulesControl.boardMatrix,
-    gameStateManager.currentPlayer,
-    gameStateManager.getPassCounter(),
-    boardX,
-    boardY,
-    movesHistory
-  );
+  const currentState = {
+    currentBoardMatrix : rulesControl.boardMatrix,
+    currentPlayerTurn : gameStateManager.currentPlayer,
+    currentPassCounter : gameStateManager.getPassCounter(),
+    currentBoardX : boardX,
+    currentBoardY : boardY,
+    currentMovesHistory : movesHistory
+  };
 
   // Create a new Worker
   const worker = new Worker(
@@ -80,7 +78,7 @@ async function aiMakeMove(board, boardX, boardY, ghostStone, movesHistory) {
 
   // Send the initial data to the worker
   worker.postMessage({
-    gameState: currentState,
+    stateData: currentState,
     iterations: 2 // Adjust the number of iterations as needed
   });
 
