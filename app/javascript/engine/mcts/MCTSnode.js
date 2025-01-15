@@ -10,16 +10,19 @@ export class MCTSnode {
 
   isFullyExpanded() {
     console.log('stop 5.1'); console.log(this.gameState);
-    return this.children.length === this.getPossibleMoves.length; // All possible moves have been explored
+    console.log('this.children.length: ', this.children.length);
+    console.log('this.getPossibleMoves.length: ', this.getPossibleMoves().length);
+    return this.children.length === this.getPossibleMoves().length; // All possible moves have been explored
   }
 
   isTerminal() {
     console.log('stop 5.2');
-    return this.gameState.isTerminal; // Check if the game is over
+    return this.gameState.isTerminal(); // Check if the game is over
   }
 
   getPossibleMoves() { // need a function for this one
-    return this.gameState.getPossibleMoves; // Returns available moves for this game state
+    console.log('stop 5.3', this.gameState);
+    return this.gameState.getPossibleMoves(); // Returns available moves for this game state
   }
 
   expand() {
