@@ -16,7 +16,6 @@ onmessage = (event) => {
       stateData.currentBoardY,
       stateData.currentMovesHistory
     );
-    console.log(stateData);
     console.log('stop 3');
     const mcts = new MCTS(gameState, iterations);
     console.log('stop 4');
