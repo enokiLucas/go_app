@@ -11,6 +11,8 @@ class mctsState {
 
     console.log('hello from state constructor');
 
+    setTimeout(this.checkEndGame(), 100);
+
     //this.initializeEventListeners(); Create a way for the application to check if the game has ended.
 
     this.boardMatrix = boardMatrix.map(row => [...row]);
@@ -24,12 +26,19 @@ class mctsState {
 /* Create a way for the application to check if the game has ended.
   initializeEventListeners() {
     console.log('stop 2.2');
-		document.addEventListener('end-game', () => {
+		document.addEventListener('end-game', () => { worker has no access to the DOM and therefore cannot use document
       this.isTerminal = true;
 		});
     console.log('stop 2.3');
 	}
 */
+
+  checkEndGame() {
+    if (gameStateManager.isTerminal = true) {
+      this.isTerminal = true;
+    }
+  }
+
   clone() {
     const clone = new mctsState(this.boardMatrix, this.currentPlayer);
     clone.passCounter = this.passCounter;
