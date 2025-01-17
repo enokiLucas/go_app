@@ -9,11 +9,7 @@ class mctsState {
       throw new Error("Invalid boardMatrix: must be a non-empty 2D array.");
     }
 
-    console.log('hello from state constructor');
-
     setTimeout(this.checkEndGame(), 100);
-
-    //this.initializeEventListeners(); Create a way for the application to check if the game has ended.
 
     this.boardMatrix = boardMatrix.map(row => [...row]);
     this.currentPlayer = currentPlayer;
@@ -23,15 +19,6 @@ class mctsState {
     this.movesMade = movesMade;
     this.isTerminal = false;
   }
-/* Create a way for the application to check if the game has ended.
-  initializeEventListeners() {
-    console.log('stop 2.2');
-		document.addEventListener('end-game', () => { worker has no access to the DOM and therefore cannot use document
-      this.isTerminal = true;
-		});
-    console.log('stop 2.3');
-	}
-*/
 
   checkEndGame() {
     if (gameStateManager.isTerminal = true) {
@@ -44,7 +31,6 @@ class mctsState {
     clone.passCounter = this.passCounter;
     clone.lastMoveX = this.lastMoveX;
     clone.lastMoveY = this.lastMoveY;
-    console.log('clone: ', clone);
     return clone;
   }
 

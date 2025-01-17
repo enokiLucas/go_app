@@ -104,28 +104,6 @@ async function aiMakeMove(board, boardX, boardY, ghostStone, movesHistory) {
     console.error("Worker error:", error);
     worker.terminate(); // Terminate if there's an error
   };
-
-  /*
-  const mcts = new MCTS(currentState, 5);
-
-  // Run the Monte Carlo simulation asynchronously to find the best move
-	const bestMove = await new Promise((resolve) => {
-		setTimeout(() => {
-			resolve(mcts.run());
-		}, 0);
-	});
-
-	if (bestMove) {
-		const [x, y] = bestMove.split(',').map(Number); // Extract coordinates from the move string
-		const cx = EDGE_MARGIN + (LENGTH_SQUARE * x);
-		const cy = EDGE_MARGIN + (LENGTH_SQUARE * y);
-		executeMove(board, ghostStone, cx, cy, x, y);
-		console.log(`AI chose move at (${x}, ${y})`);
-		return [cx, cy];
-	} else {
-		console.log("AI couldn't find a valid move.");
-	}
-	*/
 }
 
 

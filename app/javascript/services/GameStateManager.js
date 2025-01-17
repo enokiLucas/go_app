@@ -50,7 +50,6 @@ class GameStateManager { //Remember to fix SGF TODO
 
 	set isTerminal(bool) {
     this._isTerminal = bool;
-    console.log(this._isTerminal);// TEST
 	}
 
 	// Function to increment capture count
