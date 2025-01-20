@@ -13,7 +13,8 @@ export class MCTSnode {
   }
 
   isTerminal() {
-    return this.gameState.isTerminal(); // Check if the game is over
+    console.log('stop 110');
+    return this.gameState.isTerminal; // Check if the game is over
   }
 
   getPossibleMoves() { // need a function for this one
