@@ -27,14 +27,15 @@ export class MCTSnode {
     const move = availableMoves[Math.floor(Math.random() * availableMoves.length)];
     const newGameState = this.gameState.clone();
     const childNode = new MCTSnode(newGameState, this, move);
-    this.children.push(childNode);
     return childNode; // Return the newly created node
   }
 
   bestChild(c = Math.sqrt(2)) {
+    //console.log('stop 160');
     let bestScore = -Infinity;
     let bestChild = null;
     for (const child of this.children) {
+      //console.log('stop 161 + child.wins: ', child);
       const exploitation = child.wins / child.visitCount;
       const exploration = Math.sqrt(Math.log(this.visitCount) / child.visitCount);
       const ucb1 = exploitation + c * exploration;
