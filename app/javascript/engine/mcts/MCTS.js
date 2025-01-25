@@ -37,26 +37,39 @@ export class MCTS {
       }
       test_i += 1;
     }
-    console.log('children: ', node);
+    console.log('after break => children: ', node);
     return node.bestChild();
   }
 
   simulation(node) {
-    //console.log(node);
+    let test_i = 0;
     const simulatedGameState = node.gameState.clone();
     // Choose random moves until the end of the game
-    while (!simulatedGameState.isTerminal()) {
-      const randomMove = simulatedGameState.getRandomMove();
-      simulatedGameState.applyMove(randomMove);
+    while (!simulatedGameState.isTerminal) {
+      const possibleMoves = simulatedGameState.getPossibleMoves();
+      const randomMove = possibleMoves[Math.floor(Math.random() * possibleMoves.length)];
+      const [rand_x, rand_y] = randomMove;
+      simulatedGameState.applyMove(rand_x, rand_y);
+      if (test_i === 5) {
+        break;
+      }
+      test_i += 1;
     }
+    console.log('after break from simulation');
     return territoryScoring.countScore(simulatedGameState.board, false); // Assuming this returns a numeric outcome
   }
 
   backpropagation(node, reward) {
+    let test_i = 0;
     while (node) {
       node.updateStats(reward);
       node = node.parent; // Move to the parent node
+      if (test_i === 5) {
+        break;
+      }
+      test_i += 1;
     }
+    console.log('after break from backpropagation');
   }
 
   getBestMove() {

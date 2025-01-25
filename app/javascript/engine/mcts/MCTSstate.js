@@ -17,12 +17,20 @@ class mctsState {
     this.lastMoveX = boardX;
     this.lastMoveY = boardY;
     this.movesMade = movesMade;
-    this.isTerminal = false;
+    this._isTerminal = false;
   }
+
+  get isTerminal() {
+    return this._isTerminal;
+	}
+
+	set isTerminal(bool) {
+    this._isTerminal = bool;
+	}
 
   checkEndGame() {
     if (gameStateManager.isTerminal = true) {
-      this.isTerminal = true;
+      this._isTerminal = true;
     }
   }
 
@@ -35,6 +43,7 @@ class mctsState {
   }
 
   applyMove(x, y) {
+    console.log('stop 221 + x: ', x);
     const isValid = rulesControl.isMoveValid(x, y, this.boardMatrix, this.currentPlayer); // <==== ERROR is here
     if (isValid.isValid) {
       this.boardMatrix[x][y] = this.currentPlayer;
