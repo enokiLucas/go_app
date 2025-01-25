@@ -16,7 +16,7 @@ export class MCTS {
     for (let i = 0; i < this.iterations; i++) {
       console.log('stop 100');
       let node = this.selection(this.root);
-      console.log('stop 200', node);
+      console.log('stop 200');
       let reward = this.simulation(node);
       console.log('stop 300');
       this.backpropagation(node, reward);
@@ -49,7 +49,9 @@ export class MCTS {
       const possibleMoves = simulatedGameState.getPossibleMoves();
       const randomMove = possibleMoves[Math.floor(Math.random() * possibleMoves.length)];
       const [rand_x, rand_y] = randomMove;
+      console.log('stop 207 + [rand_x, rand_y]', [rand_x, rand_y]);
       simulatedGameState.applyMove(rand_x, rand_y);
+      console.log('stop 208')
       if (test_i === 5) {
         break;
       }

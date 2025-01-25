@@ -24,6 +24,7 @@ class ButtonNewGame extends HTMLElement {
 		const newMatchSettings = newMatchManager.getNewMatchSettings();
 		gameStateManager.boardSize = newMatchSettings.boardSize;
 		gameStateManager.aiPlayer = newMatchSettings.aiPlayer;
+    console.log('ddddddd', gameStateManager.boardSize);
 
 		// Emit an event to indicate a new game has started
 		document.dispatchEvent(new CustomEvent('new-game-started'));

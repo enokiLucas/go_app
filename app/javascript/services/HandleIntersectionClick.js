@@ -69,6 +69,7 @@ async function aiMakeMove(board, boardX, boardY, ghostStone, movesHistory) {
     currentBoardY : boardY,
     currentMovesHistory : movesHistory
   };
+  console.log('rules.control.boardMatrix: ', rulesControl.boardMatrix);
 
   // Create a new Worker
   const worker = new Worker(
@@ -85,6 +86,7 @@ async function aiMakeMove(board, boardX, boardY, ghostStone, movesHistory) {
   // Handle messages from the worker
   worker.onmessage = (event) => {
     const bestMove = event.data; // Get the best move from the MCTS calculation
+    console.log('bestMove: ', bestMove);
     if (bestMove) {
       const [x, y] = bestMove; // Extract coordinates from the move string
       const cx = EDGE_MARGIN + (LENGTH_SQUARE * x);
