@@ -3,10 +3,10 @@
 	margin: 0;
 	box-sizing: border-box;
 	font-family: "Poppins", sans-serif;
-	color: red; /* Testing if the CSS is loading properly */ 
+	color: whitesmoke; /* Testing if the CSS is loading properly */
 }
 
-sl-menu { 
+sl-menu {
 	margin: 2vw 5vh;
 	width: 25vw;
 	height: 55vh;
@@ -16,5 +16,6 @@ sl-menu {
 }
 
 sl-tab-group {
-	min-height: 15em;
+    display: flex;
+    flex: 1;
 }
