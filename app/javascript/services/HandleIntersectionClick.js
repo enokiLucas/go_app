@@ -84,6 +84,7 @@ async function aiMakeMove(board, boardX, boardY, ghostStone, movesHistory) {
 
   // Handle messages from the worker
   worker.onmessage = (event) => {
+    console.log('message from worker: ', event.data);
     const bestMove = event.data; // Get the best move from the MCTS calculation
     console.log(bestMove);
     console.log('type of bestMove: ', typeof bestMove);

@@ -65,6 +65,7 @@ class TerritoryScoring {
         }
       }
     }
+    /* Why did I even make this event ??
     const scoreTerritory = new CustomEvent('scoreTerritory', {
       detail: {
         blackTerritory: this.blackTerritory,
@@ -72,6 +73,7 @@ class TerritoryScoring {
       },
     });
     document.dispatchEvent(scoreTerritory);
+    */
   }
 
   // Optional: Method to get current scores
