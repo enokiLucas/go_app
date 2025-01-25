@@ -43,8 +43,9 @@ class mctsState {
   }
 
   applyMove(x, y) {
-    console.log('stop 221 + x: ', x);
+    console.log('stop 209', [x, y, this.boardMatrix, this.currentPlayer])
     const isValid = rulesControl.isMoveValid(x, y, this.boardMatrix, this.currentPlayer); // <==== ERROR is here
+    console.log('stop 210')
     if (isValid.isValid) {
       this.boardMatrix[x][y] = this.currentPlayer;
       this.currentPlayer = this.currentPlayer === 'black' ? 'white' : 'black';
@@ -63,8 +64,8 @@ class mctsState {
 
   getPossibleMoves() {
     const availableMoves = [];
-    for (let i = 0; i < gameStateManager.boardSize; i++) {
-      for (let j = 0; j < gameStateManager.boardSize; j++) {
+    for (let i = 0; i < this.boardMatrix[0].length; i++) {
+      for (let j = 0; j < this.boardMatrix[0].length; j++) {
         if (this.boardMatrix[i][j] === null) { // Assuming null indicates an empty cell
           availableMoves.push([i, j]); // Collect the coordinates of valid moves
         }

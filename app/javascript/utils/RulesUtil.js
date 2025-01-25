@@ -5,8 +5,13 @@ export function toggleColor(color) {
 	return color === 'black' ? 'white' : 'black';
 }
 
-export function isValidCoordinate(x, y) {
-	const size = gameStateManager.boardSize;
+export function isValidCoordinate(x, y, bool = false, matrix = null) {
+  let size;
+  if (bool) {
+    size = matrix[0].length;
+  } else {
+    size = gameStateManager.boardSize;
+  }
 	return x >= 0 && x < size && y >= 0 && y < size;
 }
 
@@ -61,7 +66,7 @@ export function identifyGroups(startX, startY, matrix, identifyOpposite = false)
 			const newX = x + dx;
 			const newY = y + dy;
 			// Recursively explore if the adjacent stone matches the target color and is within bounds.
-			if (isValidCoordinate(newX, newY) && matrix[newX][newY] === targetColor) {
+			if (isValidCoordinate(newX, newY, true, matrix) && matrix[newX][newY] === targetColor) {
 				const adjacentGroup = exploreGroup(newX, newY);
 				// Ensure that adjacentGroup is an array and not undefined
 				if (adjacentGroup && adjacentGroup.length > 0) {
@@ -80,7 +85,7 @@ export function identifyGroups(startX, startY, matrix, identifyOpposite = false)
 
 	// Explore groups starting from specified points.
 	startPoints.forEach(([x, y]) => {
-		if (isValidCoordinate(x, y) && matrix[x][y] === targetColor && !visited.has(`${x},${y}`)) {
+		if (isValidCoordinate(x, y, true, matrix) && matrix[x][y] === targetColor && !visited.has(`${x},${y}`)) {
 			const group = exploreGroup(x, y);
 			// If a group is identified, add it to the groups array.
 			if (group && group.length > 0) groups.push(group);

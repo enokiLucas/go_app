@@ -30,7 +30,6 @@ export class MCTSnode {
   }
 
   bestChild(c = Math.sqrt(2)) {
-    console.log('stop 150 + children: ', this.children);
     let bestScore = -Infinity;
     let bestChild = null;
     let allZero = true;
