@@ -13,7 +13,6 @@ export class MCTSnode {
   }
 
   isTerminal() {
-    console.log('stop 110');
     return this.gameState.isTerminal; // Check if the game is over
   }
 
@@ -31,11 +30,32 @@ export class MCTSnode {
   }
 
   bestChild(c = Math.sqrt(2)) {
-    //console.log('stop 160');
+    console.log('stop 150 + children: ', this.children);
     let bestScore = -Infinity;
     let bestChild = null;
+    let allZero = true;
+
+    // Check if all the children have 0 visit counts.
     for (const child of this.children) {
-      //console.log('stop 161 + child.wins: ', child);
+      if (child.visitCount > 0) {
+        allZero = false;
+        break;
+      }
+    }
+
+    // Randomly select one of the children.
+    if (allZero) {
+      return this.children[Math.floor(Math.random() * this.children.length)];
+    }
+
+    // Initialize visitCount as 1.
+    for (const child of this.children) {
+      if (child.visitCount === 0) {
+        child.visitCount = 1;
+      }
+    }
+
+    for (const child of this.children) {
       const exploitation = child.wins / child.visitCount;
       const exploration = Math.sqrt(Math.log(this.visitCount) / child.visitCount);
       const ucb1 = exploitation + c * exploration;

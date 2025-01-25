@@ -16,7 +16,11 @@ onmessage = (event) => {
     const bestMove = mcts.run(); // Run the MCTS algorithm
     postMessage(bestMove); // Send the best move back to the main thread
   } catch (error) {
-    console.log('hello from error');
-    postMessage({ error: error.message }); // Send the error message back to the main thread
+    const errorMessage = {
+      message: error.message,
+      stack: error.stack,
+    }
+
+    postMessage({ error: errorMessage }); // Send the error message back to the main thread
   }
 };

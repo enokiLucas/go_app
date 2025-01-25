@@ -37,6 +37,7 @@ export class MCTS {
       }
       test_i += 1;
     }
+    console.log('children: ', node);
     return node.bestChild();
   }
 
