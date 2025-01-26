@@ -19,3 +19,7 @@ sl-tab-group {
     display: flex;
     flex: 1;
 }
+
+.button-size {
+    padding: 10px;
+}
