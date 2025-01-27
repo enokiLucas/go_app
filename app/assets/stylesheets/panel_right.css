@@ -20,6 +20,11 @@ sl-tab-group {
     flex: 1;
 }
 
-.button-size {
-    padding: 10px;
+slot.buttom__label {
+    padding: 0 10px;
+}
+
+div#button-board-size,
+div#switch-ai-player{
+    margin-bottom: 10px;
 }

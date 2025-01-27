@@ -9,13 +9,13 @@
       <sl-tab slot="nav" panel="test-tab1">Test Tab</sl-tab>
 
       <sl-tab-panel name="new-game">
-        <%= render "web_components/button_board_size" %>
+        <div id="button-board-size"><%= render "web_components/button_board_size" %></div>
+        <div id="switch-ai-player"><%= render "web_components/ai_player_switch" %></div>
         <%= render "web_components/button_new_game" %>
-        <%= render "web_components/ai_player_switch" %>            
       </sl-tab-panel>
-            
+
       <sl-tab-panel name="test-tab1">
-              
+
       </sl-tab-panel>
 
     </sl-tab-group>
