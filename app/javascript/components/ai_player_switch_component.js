@@ -6,7 +6,7 @@ class AiPlayerSwitch extends HTMLElement {
     this.attachShadow({ mode: 'open'});
     this.shadowRoot.innerHTML = `
       <form class="switch-ai-player">
-        <p>AI player</p>
+        <p style="margin: 0px;">AI player</p>
         <sl-switch id="ai-switch" help-text="Toggle the AI player" checked>AI Player is ON</sl-switch>
       </form>
     `;

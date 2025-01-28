@@ -77,7 +77,7 @@ export class SVGBoard {
 		for (let i = 0; i < this.size; i++) {
 			let textTop = document.createElementNS(SVG_NS, "text");
 			textTop.setAttribute('x', EDGE_MARGIN + i * LENGTH_SQUARE);
-			textTop.setAttribute('y', EDGE_MARGIN - OFFSET);
+			textTop.setAttribute('y', EDGE_MARGIN - OFFSET - 5); // -5 to keep to numbers closer to the edge
 			textTop.setAttribute('text-anchor', 'middle');
 			textTop.setAttribute('style', TEXT_STYLE);
 			textTop.textContent = ALPHABET[i];
@@ -87,7 +87,7 @@ export class SVGBoard {
 		// Add numbers on the left
 		for (let i = 0; i < this.size; i++) {
 			let textLeft = document.createElementNS(SVG_NS, "text");
-			textLeft.setAttribute('x', EDGE_MARGIN - OFFSET);
+			textLeft.setAttribute('x', EDGE_MARGIN - OFFSET - 10); // -10 to prevent pieces to be on top of the numbers
 			textLeft.setAttribute('y', 3 + EDGE_MARGIN + i * LENGTH_SQUARE); // +3 is for better aliment
 			textLeft.setAttribute('text-anchor', 'middle');
 			textLeft.setAttribute('style', TEXT_STYLE);
