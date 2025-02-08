@@ -8,8 +8,8 @@
 
 sl-menu {
 	margin: 2vw 5vh;
-	width: 25vw;
-	height: 55vh;
+	width: 27vw;
+	height: 80vh;
 	font-size: 16px;
 	display: flex;
 	flex-direction: column;
@@ -27,4 +27,8 @@ slot.buttom__label {
 div#button-board-size,
 div#switch-ai-player{
     margin-bottom: 10px;
+}
+
+div.tab-group__nav-container {
+    color: red;
 }
