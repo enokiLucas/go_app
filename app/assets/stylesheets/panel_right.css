@@ -17,7 +17,6 @@ sl-menu {
 
 sl-tab-group {
     display: flex;
-    flex: 1;
 }
 
 slot.buttom__label {
@@ -27,8 +26,4 @@ slot.buttom__label {
 div#button-board-size,
 div#switch-ai-player{
     margin-bottom: 10px;
-}
-
-div.tab-group__nav-container {
-    color: red;
 }

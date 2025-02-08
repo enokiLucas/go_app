@@ -3,10 +3,11 @@
 <div data-controller="panel-right">
   <sl-menu>
     <%= render "web_components/timer_tab" %>
-    <sl-tab-group placement="end">
+    <sl-tab-group>
 
       <sl-tab slot="nav" panel="new-game">New Game</sl-tab>
-      <sl-tab slot="nav" panel="test-tab1">Test Tab</sl-tab>
+      <sl-tab slot="nav" panel="history">History</sl-tab>
+      <sl-tab slot="nav" panel="test">Test</sl-tab>
 
       <sl-tab-panel name="new-game">
         <div id="button-board-size"><%= render "web_components/button_board_size" %></div>
@@ -14,9 +15,15 @@
         <%= render "web_components/button_new_game" %>
       </sl-tab-panel>
 
-      <sl-tab-panel name="test-tab1">
-
+      <sl-tab-panel name="history">
+          <p> History of the game</p>
+          <p> Add a table</p>
       </sl-tab-panel>
+
+      <sl-tab-panel name="test">
+          <p>!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>
+      </sl-tab-panel>
+
     </sl-tab-group>
   </sl-menu>
 </div>
