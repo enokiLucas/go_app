@@ -13,7 +13,7 @@ export class SVGBoard {
 		const woodUrl = document.querySelector('[wood-url]').getAttribute('wood-url');
 		// Create a new SVG element
 		let board = document.createElementNS(SVG_NS, "svg");
-		board.setAttribute('width', '100%');
+		board.setAttribute('width', '60%');
 		board.setAttribute('height', '100%');
 		board.setAttribute('viewBox', `0 0 ${(this.size - 1) * LENGTH_SQUARE + (2 * EDGE_MARGIN)} ${(this.size - 1) * LENGTH_SQUARE + (2 * EDGE_MARGIN)}`);
 

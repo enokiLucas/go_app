@@ -49,3 +49,7 @@ footer {
 sl-menu {
 	padding-top: 0px;
 }
+
+svg {
+    overflow: visible;
+}

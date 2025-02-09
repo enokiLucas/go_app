@@ -1,11 +1,12 @@
 <main>
 
-  <div id="lieu-buttons">
-    <%= render "web_components/pass_button" %>
-    <%= render "web_components/resign_button" %>
-  </div>
-  
-  <%= render "web_components/go_board" %>
+
+    <div id="lieu-buttons-container">
+        <%= render "web_components/pass_button" %>
+        <%= render "web_components/resign_button" %>
+    </div>
+
+    <%= render "web_components/go_board" %>
 
   <!-- Keep the below in order to load sl-switch-->
   <div style="display: none">
@@ -13,5 +14,5 @@
   </div>
 
   <%= render "web_components/panel_right" %>
-  
+
 </main>
