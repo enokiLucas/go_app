@@ -1,9 +1,8 @@
 :host {
 	display: block;
-	width: 65vw; /* Example size, adjust as needed */
-	height: 65vh; /* Example size, adjust as needed */
+	width: 60vw; /* Example size, adjust as needed */
+	height: 60vh; /* Example size, adjust as needed */
 }
-
 
 /*
 Change the width and height to 50 vw/vh
