@@ -15,10 +15,6 @@ sl-menu {
 	flex-direction: column;
 }
 
-sl-tab-group {
-    display: flex;
-}
-
 slot.buttom__label {
     padding: 0 10px;
 }
