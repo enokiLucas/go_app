@@ -11,9 +11,11 @@
       <sl-tab slot="nav" panel="chat">Chat</sl-tab>
 
       <sl-tab-panel name="new-game">
-        <div id="button-board-size"><%= render "web_components/button_board_size" %></div>
-        <div id="switch-ai-player"><%= render "web_components/ai_player_switch" %></div>
-        <%= render "web_components/button_new_game" %>
+        <div class="container-components" id="container-new-game">
+          <div id="button-board-size"><%= render "web_components/button_board_size" %></div>
+          <div id="switch-ai-player"><%= render "web_components/ai_player_switch" %></div>
+          <%= render "web_components/button_new_game" %>
+        </div>
       </sl-tab-panel>
 
       <sl-tab-panel name="history">
