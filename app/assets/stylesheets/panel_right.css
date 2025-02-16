@@ -23,3 +23,7 @@ div#button-board-size,
 div#switch-ai-player{
     margin-bottom: 10px;
 }
+
+sl-tab {
+    padding: var(--sl-spacing-3x-small);
+}
