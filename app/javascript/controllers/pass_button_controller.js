@@ -4,7 +4,7 @@ import '../components/PassButton.js';
 export default class extends Controller {
   connect() {
     this.element.innerHTML = `
-      <sl-button variant="warning" id="button-pass" class="lieu-button">
+      <sl-button variant="warning" id="button-pass" class="lieu-button" size="medium">
         Pass
         <pass-button></pass-button>
       </sl-button>
