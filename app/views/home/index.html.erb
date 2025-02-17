@@ -1,18 +1,13 @@
 <main>
 
-
-    <sl-menu class="container menu" id="lieu-buttons-container">
-        <%= render "web_components/pass_button" %>
-        <%= render "web_components/resign_button" %>
-    </sl-menu>
+    <%= render "web_components/lieu_menu" %>
 
     <%= render "web_components/go_board" %>
 
-  <!-- Keep the below in order to load sl-switch-->
-  <div style="display: none">
-    <sl-switch>Hello</sl-switch>
-  </div>
+    <!-- Keep the below in order to load sl-switch-->
+    <div style="display: none">
+        <sl-switch>Hello</sl-switch>
+    </div>
 
-  <%= render "web_components/panel_right" %>
-
+    <%= render "web_components/panel_right" %>
 </main>
