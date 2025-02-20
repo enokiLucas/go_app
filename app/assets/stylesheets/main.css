@@ -38,6 +38,24 @@ footer {
 	box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.5);
 }
 
+aside#sidebar {
+  position: fixed;
+  flex: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 20;
+  width: var(--docs-sidebar-width);
+  background-color: var(--docs-background-color);
+  border-right: solid var(--docs-border-width) var(--docs-border-color);
+  border-radius: 0;
+  padding: 2rem;
+  margin: 0;
+  overflow: auto;
+  scrollbar-width: thin;
+  transition: var(--docs-sidebar-transition-speed) translate ease-in-out;
+}
+
 /* Utility Classes (Optional) */
 .centered {
 	display: flex;
