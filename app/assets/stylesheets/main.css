@@ -45,15 +45,15 @@ aside#sidebar {
   left: 0;
   bottom: 0;
   z-index: 20;
-  width: var(--docs-sidebar-width);
-  background-color: var(--docs-background-color);
-  border-right: solid var(--docs-border-width) var(--docs-border-color);
+  width: 12vw; /* 320px */
+  background-color: green; /* */
+  border-right: solid 1px whitesmoke; /* 1px  */
   border-radius: 0;
   padding: 2rem;
   margin: 0;
   overflow: auto;
   scrollbar-width: thin;
-  transition: var(--docs-sidebar-transition-speed) translate ease-in-out;
+  transition: 250ms translate ease-in-out; /* 250ms */
 }
 
 /* Utility Classes (Optional) */
