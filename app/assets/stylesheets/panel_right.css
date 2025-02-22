@@ -33,6 +33,10 @@ sl-tab-panel {
     padding: var(--sl-spacing-small) var(--sl-spacing-4x-large);
 }
 
+sl-radio-button {
+    width: 25%
+}
+
 div#container-new-game {
     display: flex;
     flex-direction: column;
