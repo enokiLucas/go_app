@@ -1,6 +1,8 @@
 <div data-controller="resign-button">
-    <sl-button variant="danger" id="button-resign" class="lieu-button" size="small" circle>
-      <sl-icon name="flag-fill" label="Resign"></sl-icon>
-      <resign-button></resign-button>
-    </sl-button>
+    <sl-tooltip content="Resign from the game" placement="bottom" hoist>
+        <sl-button variant="danger" id="button-resign" class="lieu-button" size="small" circle>
+            <sl-icon name="flag-fill" label="Resign"></sl-icon>
+            <resign-button></resign-button>
+        </sl-button>
+    </sl-tooltip>
 </div>
